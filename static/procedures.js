@@ -1,50 +1,61 @@
 var procedureBuilder = new Vue({
   el: '#procedure-builder',
   data: {
-    "relays": [
-
-      {
-        "name": "hlt",
-        "state": 0,
-        "prettyName": "HLT Valve"
-      },
-      {
-        "name": "hltDivert",
-        "location": 1,
-        "state": 0,
-        "prettyName": "HLT Divert Valve"
-      },
-      {
-        "name": "rims",
-        "location": 1,
-        "state": 0,
-        "prettyName": "RIMS Valve"
-      },
-      {
-        "name": "pump",
-        "state": 0,
-        "prettyName": "Pump"
-      }
-    ],
-    "rims": [
-      {
-        "name": "rims",
-        "state": 0,
-        "prettyName": "RIMS Heater"
-      }
-    ],
+    "relays": {
+      "binaries": [
+        {
+          "type": "binary",
+          "name": "hlt",
+          "state": 0,
+          "prettyName": "HLT Valve"
+        },
+        {
+          "type": "binary",
+          "name": "pump",
+          "state": 0,
+          "prettyName": "Pump"
+        },
+        {
+          "type": "binary",
+          "name": "rims",
+          "state": 0,
+          "prettyName": "RIMS Heater"
+        }
+      ],
+      "diverts": [
+        {
+          "type": "divert",
+          "name": "hltDivert",
+          "location": 1,
+          "prettyName": "HLT Divert Valve"
+        },
+        {
+          "type": "divert",
+          "name": "rims",
+          "location": 1,
+          "prettyName": "RIMS Divert Valve"
+        }
+      ]
+    },
 
     tableData: [
       {
+        "type": "binary",
         "name": "hlt",
-        "state": 1,
+        "state": 0,
         "prettyName": "HLT Valve"
       },
       {
-        "name": "hltDivert",
+        "type": "divert",
+        "name": "rims",
         "location": 1,
+        "prettyName": "RIMS Divert Valve"
+      },
+      {
+        "type": "binary",
+        "name": "pump",
         "state": 0,
-        "prettyName": "HLT Divert Valve"
+        "prettyName": "Pump"
       },
     ]
   },

@@ -61,8 +61,7 @@
             <thead>
               <tr>
                 <th id="step-heading">Step</th>
-                <th id="location-heading">Location</th>
-                <th>State</th>
+                <th id="state-heading">State</th>
                 <th></th>
               </tr>
             </thead>
@@ -70,18 +69,16 @@
               <tr v-for="item in tableData">
                 <td>{{ item.prettyName }}</td>
                 <td>
+                  <div v-if="item.state == 1 || item.state == 0" class="select">
+                    <select v-model="item.state" name="state-select" id="state-select">
+                      <option value="1">open</option>
+                      <option value="0">closed</option>
+                    </select>
+                  </div>
                   <div v-if="item.location == 0 || item.location == 1" class="select">
                     <select v-model="item.location" name="location-select" id="location-select">
                       <option value="1">mash</option>
                       <option value="0">boil</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="select">
-                    <select v-model="item.state" name="state-select" id="state-select">
-                      <option value="1">open</option>
-                      <option value="0">closed</option>
                     </select>
                   </div>
                 </td>
