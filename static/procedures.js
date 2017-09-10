@@ -55,48 +55,33 @@ var procedureBuilder = new Vue({
           },
           "prettyName": "RIMS Divert Valve"
         }
+      ],
+      methods: [
+        {
+          "type": "method",
+          "name": "sleep",
+          "prettyName": "Wait",
+          "args": [
+            "duration"
+          ],
+          "arg_types": ["int", "float"],
+        },
       ]
-      // methods: [
-      //   {
-      //     "name": "sleep",
-      //     "prettyName": "Wait",
-      //     "args": [],
-      //     "arg_types": ["int", "float"],
-      //   },
-      //   {
-      //     "name": "slack",
-      //     "prettyName": "Slack",
-      //     "args": [],
-      //     "arg_types": ['str']
-      //   }
-      // ]
     },
 
-    tableData: [
+    tableItems: [
 
     ]
   },
 
   methods: {
-    addSelected(id) {
-      this.items['binaries'].forEach(function (relay) {
-        if (relay.name == id) {
-          this.tableData.push(relay)
-        }
-      }, this);
-      this.items['diverts'].forEach(function (relay) {
-        if (relay.name == id) {
-          this.tableData.push(relay)
-        }
-      }, this);
+    addSelected(item) {
+      this.tableItems.push(item);
     },
 
     removeElement(item) {
-      index = this.tableData.indexOf(item);
-      if (index > -1) {
-        this.tableData.splice(index, 1);
-      }
+      this.tableItems.splice(this.tableItems.indexOf(item), 1);
     }
-  }
+  },
 
 })
