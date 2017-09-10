@@ -4,9 +4,13 @@
 
 
 #step-heading {
-  width: 60%;
+  /* width: 60%; */
 }
 
 #state-heading {
-  width: 40%;
+  /* width: 40%; */
+}
+
+#desc-heading {
+  /* width: 50%; */
 }

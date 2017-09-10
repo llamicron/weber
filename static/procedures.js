@@ -7,6 +7,7 @@ var procedureBuilder = new Vue({
           "type": "binary",
           "name": "hlt",
           "state": 0,
+          "icon": "fa-power-off",
           "stateVerbage": {
             1: 'open',
             0: 'closed'
@@ -17,6 +18,7 @@ var procedureBuilder = new Vue({
           "type": "binary",
           "name": "pump",
           "state": 0,
+          "icon": "fa-power-off",
           "stateVerbage": {
             1: 'on',
             0: 'off'
@@ -27,6 +29,7 @@ var procedureBuilder = new Vue({
           "type": "binary",
           "name": "rims",
           "state": 0,
+          "icon": "fa-thermometer-quarter",
           "stateVerbage": {
             1: 'on',
             0: 'off'
@@ -39,6 +42,7 @@ var procedureBuilder = new Vue({
           "type": "divert",
           "name": "hltDivert",
           "location": 1,
+          "icon": "fa-power-off",
           "locationVerbage": {
             1: 'mash',
             0: 'boil'
@@ -49,6 +53,7 @@ var procedureBuilder = new Vue({
           "type": "divert",
           "name": "rimsDivert",
           "location": 1,
+          "icon": "fa-power-off",
           "locationVerbage": {
             1: 'mash',
             0: 'boil'
@@ -61,11 +66,26 @@ var procedureBuilder = new Vue({
           "type": "method",
           "name": "sleep",
           "prettyName": "Wait",
+          "icon": "fa-hourglass-start",
+          "desc": "Wait for this amount of seconds",
           "args": [
             "duration"
           ],
-          "arg_types": ["int", "float"],
+          "hrType": "Number",
+          "value": null
         },
+        {
+          "type": "method",
+          "name": "watch",
+          "prettyName": "Watch Until",
+          "desc": "Wait until PV is this value or greater",
+          "icon": "fa-cubes",
+          "args": [
+            "pv"
+          ],
+          "hrType": "Number",
+          "value": null
+        }
       ]
     },
 
