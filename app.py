@@ -42,7 +42,7 @@ def dated_url_for(endpoint, **values):
 @app.route("/options", methods=["GET"])
 def serve_options():
     with open("options.json", 'r') as file:
-        return str(json.load(file))
+        return json.dumps(json.load(file))
 
 
 if __name__ == '__main__':
