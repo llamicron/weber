@@ -85,6 +85,18 @@ var procedureBuilder = new Vue({
           ],
           "hrType": "Number",
           "value": null
+        },
+        {
+          "type": "method",
+          "name": "slack",
+          "prettyName": "Send in Slack",
+          "desc": "Sends a message in slack",
+          "icon": "fa-paper-plane",
+          "args": [
+            "Message"
+          ],
+          "hrType": "Text",
+          "value": null
         }
       ]
     },
