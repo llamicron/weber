@@ -54,7 +54,7 @@
           <hr>
 
           <!-- Procedure Table -->
-          <table class="table">
+          <table class="table" id="procedure-table">
             <thead>
               <tr>
                 <th></th>
@@ -70,29 +70,11 @@
                 <td>{{ item.prettyName }}</td>
                 <td>{{ item.desc }}</td>
                 <td>
-                  <div v-if="item.type == 'binary'" class="select is-small">
-                    <select v-model="item.state" name="state-select" id="state-select">
-                      <option value="1">{{ item.stateVerbage[1] }}</option>
-                      <option value="0">{{ item.stateVerbage[0] }}</option>
-                    </select>
-                  </div>
-                  <div v-if="item.type == 'divert'" class="select is-small">
-                    <select v-model="item.location" name="location-select" id="location-select">
-                      <option value="1">mash</option>
-                      <option value="0">boil</option>
-                    </select>
-                  </div>
-                  <div v-if="item.type == 'method'">
-                    <div class="field" v-for="arg in item.args">
-                      <div class="control">
-                        <input class="input" v-model="item.value" :name="arg" type="text" :placeholder="item.hrType">
-                      </div>
-                    </div>
-                  </div>
+                  <item-row :item="item" />
                 </td>
-                <td><a href="#" @click="removeElement(item)">
-                  <i class="fa fa-remove fa-lg" aria-hidden="true"></i>
-                </a></td>
+                <td>
+                  <remove-button @remove="removeElement(item)" />
+                </td>
               </tr>
             </tbody>
           </table>
