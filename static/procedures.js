@@ -1,8 +1,8 @@
 var procedureBuilder = new Vue({
   el: '#procedure-builder',
   data: {
-    "relays": {
-      "binaries": [
+    relays: {
+      binaries: [
         {
           "type": "binary",
           "name": "hlt",
@@ -22,7 +22,7 @@ var procedureBuilder = new Vue({
           "prettyName": "RIMS Heater"
         }
       ],
-      "diverts": [
+      diverts: [
         {
           "type": "divert",
           "name": "hltDivert",
@@ -31,7 +31,7 @@ var procedureBuilder = new Vue({
         },
         {
           "type": "divert",
-          "name": "rims",
+          "name": "rimsDivert",
           "location": 1,
           "prettyName": "RIMS Divert Valve"
         }
@@ -61,8 +61,17 @@ var procedureBuilder = new Vue({
   },
 
   methods: {
-    addOption(event) {
-      this.tableData.push(event.srcElement.id)
+    addSelected(id) {
+      this.relays['binaries'].forEach(function(relay) {
+        if (relay.name == id) {
+          this.tableData.push(relay)
+        }
+      }, this);
+      this.relays['diverts'].forEach(function(relay) {
+        if (relay.name == id) {
+          this.tableData.push(relay)
+        }
+      }, this);
     }
   }
 

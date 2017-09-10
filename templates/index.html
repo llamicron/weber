@@ -36,14 +36,19 @@
           </div>
 
           <!-- Relay Items -->
-          <panel-item v-for="relay in relays" :id="relay.name + '-valve-option'" :name="relay.prettyName">
+          <panel-item v-for="relay in relays.binaries" :id="relay.name" :name="relay.prettyName" @added="addSelected">
             {{ relay.prettyName }}
           </panel-item>
 
-          <!-- RIMS Items -->
-          <panel-item v-for="rim in rims" :id="rim.name + '-option'" :name="rim.prettyName">
-            {{ rim.prettyName }}
+          <panel-item v-for="relay in relays.diverts" :id="relay.name" :name="relay.prettyName" @added="addSelected" >
+            {{ relay.prettyName }}
           </panel-item>
+
+          <div class="panel-block">
+            <button @click="addSelected" class="button is-primary is-fullwidth">
+              Add
+            </button>
+          </div>
         </nav>
 
       </div>
@@ -86,7 +91,6 @@
               </tr>
             </tbody>
           </table>
-
 
         </div>
       </div>
