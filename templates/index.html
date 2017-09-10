@@ -2,6 +2,10 @@
 
 <head>
   <title>Weber Testing</title>
+  <!-- Bulma -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
+  <!-- Custom CSS Styles -->
+  <link rel="stylesheet" href="(( url_for('static', filename='styles.css') ))">
 </head>
 
 <body>
@@ -31,48 +35,14 @@
             </p>
           </div>
 
-          <!-- HLT Panel Item -->
-          <!-- <a class="panel-block" id="hlt-relay-option" @click="addOption">
-            <span class="panel-icon">
-              <i class="fa fa-exchange" aria-hidden="true"></i>
-            </span>
-            HLT Valve
-          </a> -->
-          <panel-item id="hlt-valve-option" name="HLT Valve">
-            HLT Valve
+          <!-- Relay Items -->
+          <panel-item v-for="relay in relays" :id="relay.name + '-valve-option'" :name="relay.prettyName">
+            {{ relay.prettyName }}
           </panel-item>
 
-          <!-- RIMS Panel Item -->
-          <!-- <a class="panel-block" id="rims-relay-option" @click="addOption">
-            <span class="panel-icon">
-              <i class="fa fa-exchange" aria-hidden="true"></i>
-            </span>
-            RIMS Valve
-          </a> -->
-          <panel-item id="rims-valve-option" name="RIMS Valve">
-            RIMS Valve
-          </panel-item>
-
-          <!-- Pump Panel Item -->
-          <!-- <a class="panel-block" id="pump-relay-option" @click="addOption">
-            <span class="panel-icon">
-              <i class="fa fa-power-off" aria-hidden="true"></i>
-            </span>
-            Pump
-          </a> -->
-
-          <panel-item id="pump-option" name="Pump">
-            Pump
-          </panel-item>
-
-          <!-- <a class="panel-block" id="rims-option" @click="addOption">
-            <span class="panel-icon">
-              <i class="fa fa-thermometer-quarter" aria-hidden="true"></i>
-            </span>
-            RIMS Heater
-          </a> -->
-          <panel-item id="rims-option" name="RIMS Heater">
-            RIMS Heater
+          <!-- RIMS Items -->
+          <panel-item v-for="rim in rims" :id="rim.name + '-option'" :name="rim.prettyName">
+            {{ rim.prettyName }}
           </panel-item>
         </nav>
 
@@ -90,12 +60,31 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Step</th>
+                <th id="step-heading">Step</th>
+                <th id="location-heading">Location</th>
+                <th>State</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in tableData">
-                <td class="is-primary">{{ row }}</td>
+              <tr v-for="item in tableData">
+                <td>{{ item.prettyName }}</td>
+                <td>
+                  <div v-if="item.location == 0 || item.location == 1" class="select">
+                    <select v-model="item.location" name="location-select" id="location-select">
+                      <option value="1">mash</option>
+                      <option value="0">boil</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="select">
+                    <select v-model="item.state" name="state-select" id="state-select">
+                      <option value="1">open</option>
+                      <option value="0">closed</option>
+                    </select>
+                  </div>
+                </td>
                 <td><a href="#">Remove</a></td>
               </tr>
             </tbody>
@@ -112,16 +101,13 @@
   <script src="https://unpkg.com/vue"></script>
   <!-- Axios -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
-  <!-- Bulma -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
-  <!-- Custom CSS Styles -->
-  <link rel="stylesheet" href="(( url_for('static', filename='styles.css') ))">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Custom JS (Vue Components) -->
   <script type="text/javascript" src="(( url_for('static', filename='components.js') ))"></script>
-  <script type="text/javascript" src="(( url_for('static', filename='procedures.js') ))"></script>
   <!-- Custom JS (Vue Data) -->
+  <script type="text/javascript" src="(( url_for('static', filename='procedures.js') ))"></script>
 </body>
 
 </html>

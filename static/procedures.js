@@ -2,21 +2,26 @@ var procedureBuilder = new Vue({
   el: '#procedure-builder',
   data: {
     "relays": [
+
       {
         "name": "hlt",
-        "location": "",
         "state": 0,
         "prettyName": "HLT Valve"
       },
       {
+        "name": "hltDivert",
+        "location": 1,
+        "state": 0,
+        "prettyName": "HLT Divert Valve"
+      },
+      {
         "name": "rims",
-        "location": "",
+        "location": 1,
         "state": 0,
         "prettyName": "RIMS Valve"
       },
       {
         "name": "pump",
-        "location": null,
         "state": 0,
         "prettyName": "Pump"
       }
@@ -25,12 +30,22 @@ var procedureBuilder = new Vue({
       {
         "name": "rims",
         "state": 0,
-        "prettyName": "RIMS"
+        "prettyName": "RIMS Heater"
       }
     ],
 
     tableData: [
-      "HLT On"
+      {
+        "name": "hlt",
+        "state": 1,
+        "prettyName": "HLT Valve"
+      },
+      {
+        "name": "hltDivert",
+        "location": 1,
+        "state": 0,
+        "prettyName": "HLT Divert Valve"
+      },
     ]
   },
 
@@ -41,4 +56,3 @@ var procedureBuilder = new Vue({
   }
 
 })
-

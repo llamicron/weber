@@ -14,9 +14,22 @@ Vue.component("bulma-hero", {
 
 Vue.component("panel-item", {
   props: ['id', 'name'],
+
+  data() {
+    return {
+      isActive: false
+    }
+  },
+
+  methods: {
+    toggleActive() {
+      this.isActive = !this.isActive
+    }
+  },
+
   template: `
   <!-- Pump Panel Item -->
-  <a class="panel-block">
+  <a class="panel-block" :class="{ 'is-active': isActive }" @click="toggleActive">
     <span class="panel-icon">
       <i class="fa fa-power-off" aria-hidden="true"></i>
     </span>
@@ -24,3 +37,4 @@ Vue.component("panel-item", {
   </a>
   `
 })
+

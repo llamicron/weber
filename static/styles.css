@@ -3,16 +3,10 @@
 }
 
 
-th.is-1 {
-  width: 10%;
+#step-heading {
+  width: 60%;
 }
 
-th.is-2 {
-  width: 20%;
-}
-th.is-3 {
-  width: 30%;
-}
-th.is-4 {
+#location-heading {
   width: 40%;
 }
