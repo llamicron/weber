@@ -2,19 +2,30 @@
   margin-top: 1em;
 }
 
+/* #procedure-table {
+  table-layout: fixed;
+}
 
+#procedure-table td {
+  overflow: hidden;
+} */
+
+
+/*Setting the table width is important!*/
+table#procedure-table {
+  table-layout:fixed;
+  width:100%;
+}
+
+#icon-heading {
+  width: 5%;
+}
 #step-heading {
-  /* width: 60%; */
+  width: 40%;
 }
-
-#state-heading {
-  /* width: 40%; */
-}
-
 #desc-heading {
-  /* width: 50%; */
+  width: 25%;
 }
-
-#procedure-table {
-  width: 100%;
+#state-heading {
+  /* width: 25%; */
 }

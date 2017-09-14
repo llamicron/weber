@@ -13,32 +13,27 @@ Vue.component("bulma-hero", {
 })
 
 Vue.component("panel-item", {
-  props: ['id', 'name', 'icon'],
-
-  // data() {
-
-  // },
+  props: ['item'],
 
   methods: {
     addSelected() {
-      this.$emit("added", this.id);
+      this.$emit("added", this.item);
     },
   },
 
   template: `
   <!-- Pump Panel Item -->
-  <a class="panel-block" @click="addSelected">
+  <a class="panel-block" @click="addSelected" :id="item.name" :title="item.prettyName">
     <span class="panel-icon">
-      <i :class="'fa ' + this.icon" aria-hidden="true"></i>
+      <i class="fa" :class="item.icon" aria-hidden="true" />
     </span>
-    <slot></slot>
+    {{ item.prettyName }}
   </a>
   `
 })
 
 
-
-Vue.component("item-row", {
+Vue.component("row-select", {
   props: ["item"],
   template: `
   <div>
@@ -57,7 +52,7 @@ Vue.component("item-row", {
     <div v-if="item.type == 'method'">
       <div class="field" v-for="arg in item.args">
         <div class="control">
-          <input class="input" v-model="item.value" :name="arg" type="text" :placeholder="item.hrType">
+          <input class="input is-small" v-model="item.value" :name="arg" type="text" :placeholder="item.hrType">
         </div>
       </div>
     </div>
@@ -75,7 +70,8 @@ Vue.component('remove-button', {
 
   template: `
   <a @click="removeElement">
-    <i class="fa fa-remove fa-lg" aria-hidden="true"></i>
+    <!-- <i class="fa fa-window-close fa-lg" aria-hidden="true"></i> -->
+    <a href="#" class="button is-danger is-small">Remove</a>
   </a>
   `
 })

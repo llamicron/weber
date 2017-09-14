@@ -1,15 +1,31 @@
 var procedureBuilder = new Vue({
   el: '#procedure-builder',
   data: {
+    // We need to keep a list of items that is never changed
     items: null,
     tableItems: [
 
-    ]
+    ],
+    search: {
+      term: '',
+      results: []
+    }
   },
 
   methods: {
     addSelected(item) {
-      this.tableItems.push(item);
+      // If you don't copy the item, Vue will treat repeat table instances as the same object
+      itemCopy = JSON.parse(JSON.stringify(item));
+      this.tableItems.push(itemCopy);
+    },
+
+    filterSearchList() {
+      this.search.results = [];
+      this.searchableItems.forEach(item => {
+        if (item.prettyName.toLowerCase().indexOf(this.searchTerm) != -1) {
+          this.search.results.push(item);
+        }
+      }, this);
     },
 
     removeElement(item) {
@@ -20,10 +36,21 @@ var procedureBuilder = new Vue({
       axios.get("/options")
         .then(response => {
           this.items = response.data.items;
-        })
-        .catch(function (error) {
+          // Set default list
+          this.search.results = response.data.items;
+          return true;
+        }).catch(function (error) {
           console.log(error);
         });
+    }
+  },
+
+  computed: {
+    searchTerm() {
+      return this.search.term.toLowerCase();
+    },
+    searchableItems() {
+      return JSON.parse(JSON.stringify(this.items));
     }
   },
 

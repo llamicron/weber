@@ -28,19 +28,18 @@
           <!-- Panel search bar -->
           <div class="panel-block">
             <p class="control has-icons-left">
-              <input class="input is-small" type="text" placeholder="search">
+              <input class="input is-small" @keyUp="filterSearchList" v-model="search.term" type="text" placeholder="search">
               <span class="icon is-small is-left">
                 <i class="fa fa-search"></i>
               </span>
             </p>
           </div>
 
-          <!-- Panel Items -->
-          <div v-for="group in items">
-            <panel-item v-for="item in group" :icon="item.icon" :key="item.name" :id="item.name" :name="item.prettyName" @added="addSelected(item)">
-              {{ item.prettyName }}
-            </panel-item>
-          </div>
+          <!-- All Panel Items -->
+          <panel-item v-for="item in search.results" :key="item.name" :item="item" @added="addSelected(item)" />
+
+          <!-- Seach Results -->
+          <!-- <panel-item v-for="item in search.results" :key="item.name" :item="item" @added="addSelected(item)"/> -->
         </nav>
 
       </div>
@@ -48,16 +47,12 @@
       <!-- Table Column -->
       <div class="column is-7">
         <div class="box">
-          <h1 class="title">
-            Procedure
-          </h1>
-          <hr>
 
           <!-- Procedure Table -->
           <table class="table" id="procedure-table">
             <thead>
               <tr>
-                <th></th>
+                <th id="icon-heading"></th>
                 <th id="step-heading">Step</th>
                 <th id="desc-heading">Desc.</th>
                 <th id="state-heading">State</th>
@@ -70,7 +65,7 @@
                 <td>{{ item.prettyName }}</td>
                 <td>{{ item.desc }}</td>
                 <td>
-                  <item-row :item="item" />
+                  <row-select :item="item" />
                 </td>
                 <td>
                   <remove-button @remove="removeElement(item)" />
