@@ -8,8 +8,8 @@
         "onArg": 1, 
         "name": "hlt"
       }, 
-      "name": "hlt", 
-      "icon": "fa-superpowers"
+      "icon": "fa-superpowers", 
+      "name": "hlt"
     }, 
     {
       "state": false, 
@@ -19,8 +19,8 @@
         "onArg": "mash", 
         "name": "hlt_to"
       }, 
-      "name": "hltToMash", 
-      "icon": "fa-superpowers"
+      "icon": "fa-superpowers", 
+      "name": "hltToMash"
     }, 
     {
       "state": false, 
@@ -30,8 +30,8 @@
         "onArg": 1, 
         "name": "pump"
       }, 
-      "name": "pump", 
-      "icon": "fa-superpowers"
+      "icon": "fa-superpowers", 
+      "name": "pump"
     }, 
     {
       "state": false, 
@@ -41,8 +41,8 @@
         "onArg": "mash", 
         "name": "rims_to"
       }, 
-      "name": "rimsToMash", 
-      "icon": "fa-superpowers"
+      "icon": "fa-superpowers", 
+      "name": "rimsToMash"
     }, 
     {
       "state": false, 
@@ -52,8 +52,8 @@
         "onArg": 1, 
         "name": "pid"
       }, 
-      "name": "rims", 
-      "icon": "fa-thermometer-quarter"
+      "icon": "fa-thermometer-quarter", 
+      "name": "rims"
     }
   ]
 }
