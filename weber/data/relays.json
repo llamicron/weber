@@ -8,19 +8,19 @@
         "onArg": 1, 
         "name": "hlt"
       }, 
-      "icon": "fa-superpowers", 
-      "name": "hlt"
+      "name": "hlt", 
+      "icon": "fa-superpowers"
     }, 
     {
-      "state": true, 
+      "state": false, 
       "prettyName": "HLT Divert Valve", 
       "method": {
         "offArg": "boil", 
         "onArg": "mash", 
         "name": "hlt_to"
       }, 
-      "icon": "fa-superpowers", 
-      "name": "hltToMash"
+      "name": "hltToMash", 
+      "icon": "fa-superpowers"
     }, 
     {
       "state": false, 
@@ -30,8 +30,8 @@
         "onArg": 1, 
         "name": "pump"
       }, 
-      "icon": "fa-superpowers", 
-      "name": "pump"
+      "name": "pump", 
+      "icon": "fa-superpowers"
     }, 
     {
       "state": false, 
@@ -41,8 +41,8 @@
         "onArg": "mash", 
         "name": "rims_to"
       }, 
-      "icon": "fa-superpowers", 
-      "name": "rimsToMash"
+      "name": "rimsToMash", 
+      "icon": "fa-superpowers"
     }, 
     {
       "state": false, 
@@ -52,8 +52,8 @@
         "onArg": 1, 
         "name": "pid"
       }, 
-      "icon": "fa-thermometer-quarter", 
-      "name": "rims"
+      "name": "rims", 
+      "icon": "fa-thermometer-quarter"
     }
   ]
 }

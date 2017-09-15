@@ -28,3 +28,7 @@ class Handler():
         with open(self.data_dir + self.files['relays'], 'w') as file:
             json.dump(data, file, indent=2)
 
+
+    def to_vue(self, file):
+        with open(self.data_dir + self.files[file], 'r') as file:
+            return json.dumps(json.load(file))

@@ -53,8 +53,8 @@ def set_relay():
 # Resources
 @app.route("/items", methods=["GET"])
 def serve_items():
-    with open("weber/data/items.json", 'r') as file:
-        return json.dumps(json.load(file))
+    return json_handler.to_vue("items")
+
 
 
 @app.route('/relay-list', methods=["GET"])
@@ -65,8 +65,7 @@ def serve_relay_list():
 
 @app.route('/pid', methods=["GET"])
 def serve_pid_data():
-    with open('weber/data/pid_test_data.json', 'r') as file:
-        return json.dumps(json.load(file))
+    return json.dumps(con.pid_status())
 
 
 

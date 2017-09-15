@@ -1,6 +1,3 @@
-// Don't get confused by the "state" key here. It does not show the current state of the relay
-// just the desired state in the procedure. Think of each of these items as "steps" in a procedure.
-// They can occur any number of times in a proc.
 {
   "items": [
       {

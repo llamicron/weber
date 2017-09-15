@@ -37,7 +37,7 @@ var controller = new Vue({
     getPidData() {
       axios.get('/pid')
         .then(response => {
-          this.pid = response.data.pid;
+          this.pid = response.data;
         })
         .catch(error => {
           console.log(error);
