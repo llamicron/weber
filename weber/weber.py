@@ -23,7 +23,7 @@ json_handler = Handler()
 def index():
     return render_template("controller.html")
 
-@app.route('/controller', methods=["GET"])
+@app.route('/controller')
 def redirect_home():
     return redirect("/")
 
@@ -39,7 +39,6 @@ def set_relay():
 
     run = getattr(con, method['name'])
 
-
     if relay['state'] == 1:
         run(method['offArg'])
     else:
@@ -49,6 +48,15 @@ def set_relay():
 
     return "True"
 
+
+@app.route('/set-sv', methods=["POST"])
+def set_sv():
+    sv = float(request.get_json()['sv'])
+    if 0.0 < sv < 999.9:
+        con.set_sv(sv)
+        return "True"
+    else:
+        return "False"
 
 # Resources
 @app.route("/items", methods=["GET"])
@@ -68,9 +76,6 @@ def serve_pid_data():
     return json.dumps(con.pid_status())
 
 
-
-
-
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
@@ -83,9 +88,6 @@ def dated_url_for(endpoint, **values):
                                      endpoint, filename)
             values['q'] = int(os.stat(file_path).st_mtime)
     return url_for(endpoint, **values)
-
-
-
 
 if __name__ == '__main__':
     app.run("0.0.0.0")

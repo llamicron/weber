@@ -58,6 +58,19 @@
                     <temp-tile :temp="pid['pv']" text="Process Value" />
                   </div>
                 </div>
+
+                <div class="columns">
+                  <div class="column is-4" id="set-sv">
+                    <div class="field">
+                      <div class="control">
+                        <input v-model="svField" class="input" name="sv" type="text" placeholder="SV Temp">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column is-2">
+                    <a @click="setSv" class="button is-info">Set</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

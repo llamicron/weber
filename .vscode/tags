@@ -4,31 +4,40 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Controller	../app.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:3
-CustomFlask	../app.py	/^class CustomFlask(Flask):$/;"	kind:class	line:6
-Flask	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
-app	../app.py	/^app = CustomFlask(__name__)$/;"	kind:variable	line:17
-app.py	../app.py	1;"	kind:file	line:1
-block_end_string	../app.py	/^    block_end_string='%)',$/;"	kind:variable	line:10
-block_start_string	../app.py	/^    block_start_string='(%',$/;"	kind:variable	line:9
-comment_end_string	../app.py	/^    comment_end_string='#)',$/;"	kind:variable	line:14
-comment_start_string	../app.py	/^    comment_start_string='(#',$/;"	kind:variable	line:13
-con	../app.py	/^con = Controller()$/;"	kind:variable	line:18
-dated_url_for	../app.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:74
-index	../app.py	/^def index():$/;"	kind:function	line:21
-jinja_options	../app.py	/^  jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:7
-json	../app.py	/^import json$/;"	kind:namespace	line:4
-os	../app.py	/^import os$/;"	kind:namespace	line:2
-override_url_for	../app.py	/^def override_url_for():$/;"	kind:function	line:71
-procedures	../app.py	/^def procedures():$/;"	kind:function	line:30
-redirect	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
-redirect_home	../app.py	/^def redirect_home():$/;"	kind:function	line:25
-render_template	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
-request	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
-serve_items	../app.py	/^def serve_items():$/;"	kind:function	line:50
-serve_pid_data	../app.py	/^def serve_pid_data():$/;"	kind:function	line:62
-serve_relay_list	../app.py	/^def serve_relay_list():$/;"	kind:function	line:56
-set_relay	../app.py	/^def set_relay():$/;"	kind:function	line:34
-url_for	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
-variable_end_string	../app.py	/^    variable_end_string='))',$/;"	kind:variable	line:12
-variable_start_string	../app.py	/^    variable_start_string='((',$/;"	kind:variable	line:11
+Controller	../weber/json_handler.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:2
+Controller	../weber/weber.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:3
+CustomFlask	../weber/weber.py	/^class CustomFlask(Flask):$/;"	kind:class	line:7
+Flask	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+Handler	../weber/json_handler.py	/^class Handler():$/;"	kind:class	line:4
+Handler	../weber/weber.py	/^from json_handler import Handler$/;"	kind:namespace	line:4
+__init__	../weber/json_handler.py	/^    def __init__(self):$/;"	kind:member	line:5
+app	../weber/weber.py	/^app = CustomFlask(__name__)$/;"	kind:variable	line:18
+block_end_string	../weber/weber.py	/^    block_end_string='%)',$/;"	kind:variable	line:11
+block_start_string	../weber/weber.py	/^    block_start_string='(%',$/;"	kind:variable	line:10
+comment_end_string	../weber/weber.py	/^    comment_end_string='#)',$/;"	kind:variable	line:15
+comment_start_string	../weber/weber.py	/^    comment_start_string='(#',$/;"	kind:variable	line:14
+con	../weber/weber.py	/^con = Controller()$/;"	kind:variable	line:19
+dated_url_for	../weber/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:74
+index	../weber/weber.py	/^def index():$/;"	kind:function	line:23
+jinja_options	../weber/weber.py	/^  jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:8
+json	../weber/json_handler.py	/^import json$/;"	kind:namespace	line:1
+json	../weber/weber.py	/^import json$/;"	kind:namespace	line:5
+json_handler	../weber/weber.py	/^json_handler = Handler()$/;"	kind:variable	line:20
+json_handler.py	../weber/json_handler.py	1;"	kind:file	line:1
+os	../weber/weber.py	/^import os$/;"	kind:namespace	line:2
+override_url_for	../weber/weber.py	/^def override_url_for():$/;"	kind:function	line:71
+procedures	../weber/weber.py	/^def procedures():$/;"	kind:function	line:32
+redirect	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+redirect_home	../weber/weber.py	/^def redirect_home():$/;"	kind:function	line:27
+render_template	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+request	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+serve_items	../weber/weber.py	/^def serve_items():$/;"	kind:function	line:54
+serve_pid_data	../weber/weber.py	/^def serve_pid_data():$/;"	kind:function	line:66
+serve_relay_list	../weber/weber.py	/^def serve_relay_list():$/;"	kind:function	line:60
+set_relay	../weber/weber.py	/^def set_relay():$/;"	kind:function	line:36
+to_vue	../weber/json_handler.py	/^    def to_vue(self, file):$/;"	kind:member	line:32
+update_relays	../weber/json_handler.py	/^    def update_relays(self):$/;"	kind:member	line:14
+url_for	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+variable_end_string	../weber/weber.py	/^    variable_end_string='))',$/;"	kind:variable	line:13
+variable_start_string	../weber/weber.py	/^    variable_start_string='((',$/;"	kind:variable	line:12
+weber.py	../weber/weber.py	1;"	kind:file	line:1

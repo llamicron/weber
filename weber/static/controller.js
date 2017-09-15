@@ -7,7 +7,8 @@ var controller = new Vue({
       pid_running: false,
       sv: 0.0,
       pv: 0.0
-    }
+    },
+    svField: ''
   },
 
   methods: {
@@ -47,6 +48,19 @@ var controller = new Vue({
     loadData() {
       this.getRelaysFromJson();
       this.getPidData();
+    },
+
+    setSv() {
+      axios.post('/set-sv', {
+        sv: this.svField
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      this.svField = '';
     }
   },
 
