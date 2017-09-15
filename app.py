@@ -1,5 +1,6 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect, request
 import os
+from brewer.controller import Controller
 import json
 
 class CustomFlask(Flask):
@@ -14,14 +15,55 @@ class CustomFlask(Flask):
   ))
 
 app = CustomFlask(__name__)
+con = Controller()
 
 @app.route('/')
-def hello_world():
-    return render_template("index.html")
+def index():
+    return render_template("controller.html")
 
-@app.route('/data')
-def send_JSON():
-    return {'hello': 'world'}
+@app.route('/controller', methods=["GET"])
+def redirect_home():
+    return redirect("/")
+
+
+@app.route('/procedures')
+def procedures():
+    return render_template("procedures.html")
+
+@app.route('/set-relay', methods=["POST"])
+def set_relay():
+    relay = request.get_json()['relay']
+    method = relay['method']
+
+    run = getattr(con, method['name'])
+
+    if relay['state'] == 1:
+        run(method['offArg'])
+    else:
+        run(method['onArg'])
+
+    return "True"
+
+
+# Resources
+@app.route("/items", methods=["GET"])
+def serve_items():
+    with open("items.json", 'r') as file:
+        return json.dumps(json.load(file))
+
+
+@app.route('/relay-list', methods=["GET"])
+def serve_relay_list():
+    with open('relays.json', 'r') as file:
+        return json.dumps(json.load(file))
+
+
+@app.route('/pid', methods=["GET"])
+def serve_pid_data():
+    with open('pid_test_data.json', 'r') as file:
+        return json.dumps(json.load(file))
+
+
 
 
 
@@ -39,10 +81,8 @@ def dated_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 
-@app.route("/options", methods=["GET"])
-def serve_options():
-    with open("options.json", 'r') as file:
-        return json.dumps(json.load(file))
+
+
 
 
 if __name__ == '__main__':

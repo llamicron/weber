@@ -1,5 +1,5 @@
-var procedureBuilder = new Vue({
-  el: '#procedure-builder',
+var procedures = new Vue({
+  el: '#procedures',
   data: {
     // We need to keep a list of items that is never changed
     items: null,
@@ -33,7 +33,7 @@ var procedureBuilder = new Vue({
     },
 
     getItemsFromJson() {
-      axios.get("/options")
+      axios.get("/items")
         .then(response => {
           this.items = response.data.items;
           // Set default list

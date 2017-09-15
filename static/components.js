@@ -75,3 +75,30 @@ Vue.component('remove-button', {
   </a>
   `
 })
+
+Vue.component('relay-button', {
+  props: ['relay'],
+
+  methods: {
+    toggleRelay() {
+      this.$emit('clicked');
+    }
+  },
+
+  template: `
+  <a class="button relay-button" :class="{ 'is-primary': relay.state == 1, 'is-danger': relay.state == 0 }" :title="relay.prettyName" @click="toggleRelay">{{ relay.prettyName }}</a>
+  `
+})
+
+Vue.component('temp-tile', {
+  props: ['temp', 'text'],
+  template: `
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-info" id="sv-tile">
+      <div class="content">
+        <p class="subtitle">{{ text }} {{ temp }} ℉</p>
+      </div>
+    </article>
+  </div>
+  `
+})

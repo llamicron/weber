@@ -26,6 +26,8 @@ table#procedure-table {
 #desc-heading {
   width: 25%;
 }
-#state-heading {
-  /* width: 25%; */
+
+.relay-button {
+  width: 100%;
+  margin-bottom: 0.5em;
 }
