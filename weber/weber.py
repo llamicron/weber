@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, redirect, request
 import os
 from brewer.controller import Controller
+from json_handler import Handler
 import json
 
 class CustomFlask(Flask):
@@ -16,6 +17,7 @@ class CustomFlask(Flask):
 
 app = CustomFlask(__name__)
 con = Controller()
+json_handler = Handler()
 
 @app.route('/')
 def index():
@@ -37,10 +39,13 @@ def set_relay():
 
     run = getattr(con, method['name'])
 
+
     if relay['state'] == 1:
         run(method['offArg'])
     else:
         run(method['onArg'])
+
+    json_handler.update_relays()
 
     return "True"
 
@@ -48,19 +53,19 @@ def set_relay():
 # Resources
 @app.route("/items", methods=["GET"])
 def serve_items():
-    with open("items.json", 'r') as file:
+    with open("weber/data/items.json", 'r') as file:
         return json.dumps(json.load(file))
 
 
 @app.route('/relay-list', methods=["GET"])
 def serve_relay_list():
-    with open('relays.json', 'r') as file:
+    with open('weber/data/relays.json', 'r') as file:
         return json.dumps(json.load(file))
 
 
 @app.route('/pid', methods=["GET"])
 def serve_pid_data():
-    with open('pid_test_data.json', 'r') as file:
+    with open('weber/data/pid_test_data.json', 'r') as file:
         return json.dumps(json.load(file))
 
 
@@ -83,7 +88,5 @@ def dated_url_for(endpoint, **values):
 
 
 
-
-
 if __name__ == '__main__':
-    app.run()
+    app.run("0.0.0.0")

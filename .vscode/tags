@@ -4,28 +4,31 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-CustomFlask	../app.py	/^class CustomFlask(Flask):$/;"	kind:class	line:5
-Flask	../app.py	/^from flask import Flask, render_template, url_for, redirect$/;"	kind:namespace	line:1
-app	../app.py	/^app = CustomFlask(__name__)$/;"	kind:variable	line:16
+Controller	../app.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:3
+CustomFlask	../app.py	/^class CustomFlask(Flask):$/;"	kind:class	line:6
+Flask	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+app	../app.py	/^app = CustomFlask(__name__)$/;"	kind:variable	line:17
 app.py	../app.py	1;"	kind:file	line:1
-block_end_string	../app.py	/^    block_end_string='%)',$/;"	kind:variable	line:9
-block_start_string	../app.py	/^    block_start_string='(%',$/;"	kind:variable	line:8
-comment_end_string	../app.py	/^    comment_end_string='#)',$/;"	kind:variable	line:13
-comment_start_string	../app.py	/^    comment_start_string='(#',$/;"	kind:variable	line:12
-dated_url_for	../app.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:36
-index	../app.py	/^def index():$/;"	kind:function	line:19
-jinja_options	../app.py	/^  jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:6
-json	../app.py	/^import json$/;"	kind:namespace	line:3
+block_end_string	../app.py	/^    block_end_string='%)',$/;"	kind:variable	line:10
+block_start_string	../app.py	/^    block_start_string='(%',$/;"	kind:variable	line:9
+comment_end_string	../app.py	/^    comment_end_string='#)',$/;"	kind:variable	line:14
+comment_start_string	../app.py	/^    comment_start_string='(#',$/;"	kind:variable	line:13
+con	../app.py	/^con = Controller()$/;"	kind:variable	line:18
+dated_url_for	../app.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:74
+index	../app.py	/^def index():$/;"	kind:function	line:21
+jinja_options	../app.py	/^  jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:7
+json	../app.py	/^import json$/;"	kind:namespace	line:4
 os	../app.py	/^import os$/;"	kind:namespace	line:2
-override_url_for	../app.py	/^def override_url_for():$/;"	kind:function	line:33
-procedures	../app.py	/^def procedures():$/;"	kind:function	line:23
-redirect	../app.py	/^from flask import Flask, render_template, url_for, redirect$/;"	kind:namespace	line:1
-redirect_home	../app.py	/^def redirect_home():$/;"	kind:function	line:57
-render_template	../app.py	/^from flask import Flask, render_template, url_for, redirect$/;"	kind:namespace	line:1
-send_JSON	../app.py	/^def send_JSON():$/;"	kind:function	line:27
-serve_items	../app.py	/^def serve_items():$/;"	kind:function	line:47
-serve_pid_data	../app.py	/^def serve_pid_data():$/;"	kind:function	line:61
-serve_relay_list	../app.py	/^def serve_relay_list():$/;"	kind:function	line:52
-url_for	../app.py	/^from flask import Flask, render_template, url_for, redirect$/;"	kind:namespace	line:1
-variable_end_string	../app.py	/^    variable_end_string='))',$/;"	kind:variable	line:11
-variable_start_string	../app.py	/^    variable_start_string='((',$/;"	kind:variable	line:10
+override_url_for	../app.py	/^def override_url_for():$/;"	kind:function	line:71
+procedures	../app.py	/^def procedures():$/;"	kind:function	line:30
+redirect	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+redirect_home	../app.py	/^def redirect_home():$/;"	kind:function	line:25
+render_template	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+request	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+serve_items	../app.py	/^def serve_items():$/;"	kind:function	line:50
+serve_pid_data	../app.py	/^def serve_pid_data():$/;"	kind:function	line:62
+serve_relay_list	../app.py	/^def serve_relay_list():$/;"	kind:function	line:56
+set_relay	../app.py	/^def set_relay():$/;"	kind:function	line:34
+url_for	../app.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:1
+variable_end_string	../app.py	/^    variable_end_string='))',$/;"	kind:variable	line:12
+variable_start_string	../app.py	/^    variable_start_string='((',$/;"	kind:variable	line:11
