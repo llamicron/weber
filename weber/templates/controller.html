@@ -24,7 +24,7 @@
     </div>
 
 
-    <div class="container">
+    <div id="content" class="container">
       <div class="columns">
         <div class="column is-8 is-offset-2" id="main">
           <div class="box">
@@ -73,10 +73,30 @@
                 </div>
               </div>
             </div>
+            <hr>
+
+            <div class="columns">
+
+              <div class="column is-4">
+
+                <div class="field">
+                  <div class="control">
+                    <input class="input" v-model="timer.timerInput" name="timer" type="text" placeholder="Timer in minutes">
+                  </div>
+                </div>
+              </div>
+              <div class="column is-2">
+                <a class="button" @click="startTimer">Start</a>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
+
+
+    <timer-hero :time="timeRemainingString" />
 
   </div>
 </body>

@@ -12,8 +12,8 @@
       "name": "hlt"
     }, 
     {
-      "state": false, 
-      "prettyName": "HLT Divert Valve", 
+      "state": true, 
+      "prettyName": "HLT To Boil", 
       "method": {
         "offArg": "boil", 
         "onArg": "mash", 
@@ -35,7 +35,7 @@
     }, 
     {
       "state": false, 
-      "prettyName": "RIMS Divert Valve", 
+      "prettyName": "RIMS To Boil", 
       "method": {
         "offArg": "boil", 
         "onArg": "mash", 

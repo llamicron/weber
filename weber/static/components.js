@@ -102,3 +102,29 @@ Vue.component('temp-tile', {
   </div>
   `
 })
+
+
+Vue.component('timer-hero', {
+  props: ['time'],
+  template: `
+  <section id="timer" class="hero is-dark is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+
+        <div class="columns">
+          <div class="column is-6" id="time-remaining-column">
+            <h1 class="title has-text-right">
+              Time remaining
+            </h1>
+          </div>
+          <div class="column is-6">
+            <h1 class="title">
+              {{ time }}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  `
+})
