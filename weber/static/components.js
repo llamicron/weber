@@ -134,6 +134,12 @@ Vue.component('timer-hero', {
 
       if (this.remaining < 1) {
         string = 'Done';
+        if (this.remaining < -60) {
+          minutes = Math.floor(this.remaining / 60);
+          string = string + ", " + minutes.toString().replace("-", "+") + " minutes"
+        } else {
+          string = string + ", " + this.remaining.toString().replace("-", "+") + " seconds"
+        }
       }
 
       return string;
@@ -144,7 +150,6 @@ Vue.component('timer-hero', {
   <section id="timer" class="hero is-dark is-fullheight">
     <div class="hero-body">
       <div class="container">
-
         <div class="columns">
           <div class="column is-6" id="time-remaining-column">
             <h1 class="title has-text-right">

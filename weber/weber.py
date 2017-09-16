@@ -58,6 +58,13 @@ def set_sv():
     else:
         return "False"
 
+@app.route('/slack', methods=["POST"])
+def send_in_slack():
+    message = request.get_json()['message']
+    con.slack.send(message)
+    return 'true'
+
+
 # Resources
 @app.route("/items", methods=["GET"])
 def serve_items():

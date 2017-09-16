@@ -12,7 +12,10 @@ var controller = new Vue({
     timer: {
       input: '',
       remaining: -1
-    }
+    },
+    slackMessage: '',
+    disabledInput: false,
+    errorMessage: ''
   },
 
   methods: {
@@ -72,10 +75,17 @@ var controller = new Vue({
     },
 
     startTimer() {
+      if (!parseFloat(this.timer.input)) {
+        this.errorMessage = "Timer length needs to be a number";
+        this.timer.input = '';
+        return false;
+      }
       interval = parseFloat(this.minutesToSeconds(this.timer.input));
       this.timer.endTime = this.now() + interval;
       this.timer.remaining = this.timeRemaining()
       this.timer.input = '';
+
+      this.disabledInput = true;
     },
 
     secondsToMinutes(seconds) {
@@ -91,9 +101,31 @@ var controller = new Vue({
     },
 
     timerDone() {
-      if (this.timer.remaining == 0) {
-        console.log("Finished at " + this.now());
+      this.disabledInput = false;
+      console.log("Finished at " + this.now());
+      if (this.slackMessage != '') {
+        this.slack();
+        this.slackMessage = ''
       }
+    },
+
+    incrementRemainingTime() {
+      this.timer.remaining = this.timeRemaining();
+    },
+
+    slack() {
+      axios.post('/slack', {
+        message: this.slackMessage
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (response) {
+        console.log(response);
+      });
+    },
+
+    cancelTimer() {
+      this.timer.remaining = -1;
+      this.slackMessage = '';
     }
   },
 
@@ -103,9 +135,7 @@ var controller = new Vue({
 
     setInterval(function () {
       this.loadData();
-        if (this.timer.remaining > -1) {
-          this.timer.remaining = this.timeRemaining();
-        }
+      this.incrementRemainingTime();
       if (this.timer.remaining == 0) {
         this.timerDone();
       }
