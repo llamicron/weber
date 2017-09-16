@@ -105,7 +105,41 @@ Vue.component('temp-tile', {
 
 
 Vue.component('timer-hero', {
-  props: ['time'],
+  props: ['remaining'],
+
+  methods: {
+    now() {
+      return Math.floor(new Date().getTime() / 1000);
+    },
+
+    remainingTimeHR() {
+      string = '';
+      minutes = Math.floor(this.remaining / 60);
+      if (minutes > 0) {
+        string = string + minutes.toString();
+        if (minutes == 1) {
+          string = string + " Minute";
+        } else {
+          string = string + " Minutes";
+        }
+      }
+
+      seconds = this.remaining % 60
+      if (seconds > 0) {
+        if (minutes > 0) {
+          string = string + ", ";
+        }
+        string = string + seconds.toString() + " Seconds";
+      }
+
+      if (this.remaining < 1) {
+        string = 'Done';
+      }
+
+      return string;
+    }
+  },
+
   template: `
   <section id="timer" class="hero is-dark is-fullheight">
     <div class="hero-body">
@@ -119,7 +153,7 @@ Vue.component('timer-hero', {
           </div>
           <div class="column is-6">
             <h1 class="title">
-              {{ time }}
+              {{ remainingTimeHR() }}
             </h1>
           </div>
         </div>

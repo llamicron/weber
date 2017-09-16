@@ -81,13 +81,13 @@
 
                 <div class="field">
                   <div class="control">
-                    <input class="input" v-model="timer.timerInput" name="timer" type="text" placeholder="Timer in minutes">
+                    <input class="input" @keyDown.enter="startTimer" v-model="timer.input" name="timer" type="text" placeholder="Timer in minutes">
                   </div>
                 </div>
               </div>
-              <div class="column is-2">
-                <a class="button" @click="startTimer">Start</a>
-              </div>
+              <!-- <div class="column is-2">
+                <a class="button" @click="setEndTime">Start</a>
+              </div> -->
             </div>
 
           </div>
@@ -96,7 +96,7 @@
     </div>
 
 
-    <timer-hero :time="timeRemainingString" />
+    <timer-hero :remaining="timer.remaining" />
 
   </div>
 </body>

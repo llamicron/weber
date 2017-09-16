@@ -10,10 +10,8 @@ var controller = new Vue({
     },
     svField: '',
     timer: {
-      timerInput: '',
-      string: '',
-      startTime: 0,
-      endTime: 0
+      input: '',
+      remaining: -1
     }
   },
 
@@ -69,12 +67,15 @@ var controller = new Vue({
       this.svField = '';
     },
 
+    now() {
+      return Math.floor(new Date().getTime() / 1000);
+    },
+
     startTimer() {
-      input = parseFloat(this.minutesToSeconds(this.timer.timerInput));
-      this.timer.startTime = Math.floor(new Date().getTime() / 1000);
-      this.timer.endTime = this.timer.startTime + input;
-      this.timer.remaining = this.timeRemaining();
-      this.timer.timerInput = '';
+      interval = parseFloat(this.minutesToSeconds(this.timer.input));
+      this.timer.endTime = this.now() + interval;
+      this.timer.remaining = this.timeRemaining()
+      this.timer.input = '';
     },
 
     secondsToMinutes(seconds) {
@@ -84,30 +85,15 @@ var controller = new Vue({
     minutesToSeconds(minutes) {
       return parseFloat(minutes) * 60;
     },
+
     timeRemaining() {
       return this.timer.endTime - Math.floor(new Date().getTime() / 1000);
-    }
-  },
+    },
 
-  computed: {
-    timeRemainingString() {
-      this.timer.string = '';
-      minutes = Math.floor(this.timer.remaining / 60);
-      if (minutes > 0) {
-        this.timer.string = this.timer.string + minutes.toString();
-        if (minutes == 1) {
-          this.timer.string = this.timer.string + " Minute";
-        } else {
-          this.timer.string = this.timer.string + " Minutes";
-        }
+    timerDone() {
+      if (this.timer.remaining == 0) {
+        console.log("Finished at " + this.now());
       }
-
-      seconds = this.timer.remaining % 60
-      if (seconds > 0) {
-        this.timer.string = this.timer.string + ", " + seconds.toString() + " Seconds";
-      }
-
-      return this.timer.string;
     }
   },
 
@@ -117,7 +103,12 @@ var controller = new Vue({
 
     setInterval(function () {
       this.loadData();
-      this.timer.remaining = this.timeRemaining()
+        if (this.timer.remaining > -1) {
+          this.timer.remaining = this.timeRemaining();
+        }
+      if (this.timer.remaining == 0) {
+        this.timerDone();
+      }
     }.bind(this), 1000);
   }
 })
