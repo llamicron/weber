@@ -1,15 +1,15 @@
 {
   "relays": [
     {
-      "state": false, 
+      "state": true, 
       "prettyName": "HLT Valve", 
       "method": {
         "offArg": 0, 
         "onArg": 1, 
         "name": "hlt"
       }, 
-      "icon": "fa-superpowers", 
-      "name": "hlt"
+      "name": "hlt", 
+      "icon": "fa-superpowers"
     }, 
     {
       "state": true, 
@@ -19,30 +19,30 @@
         "onArg": "mash", 
         "name": "hlt_to"
       }, 
-      "icon": "fa-superpowers", 
-      "name": "hltToMash"
+      "name": "hltToMash", 
+      "icon": "fa-superpowers"
     }, 
     {
-      "state": false, 
+      "state": true, 
       "prettyName": "Pump", 
       "method": {
         "offArg": 0, 
         "onArg": 1, 
         "name": "pump"
       }, 
-      "icon": "fa-superpowers", 
-      "name": "pump"
+      "name": "pump", 
+      "icon": "fa-superpowers"
     }, 
     {
-      "state": false, 
+      "state": true, 
       "prettyName": "RIMS To Boil", 
       "method": {
         "offArg": "boil", 
         "onArg": "mash", 
         "name": "rims_to"
       }, 
-      "icon": "fa-superpowers", 
-      "name": "rimsToMash"
+      "name": "rimsToMash", 
+      "icon": "fa-superpowers"
     }, 
     {
       "state": false, 
@@ -52,8 +52,8 @@
         "onArg": 1, 
         "name": "pid"
       }, 
-      "icon": "fa-thermometer-quarter", 
-      "name": "rims"
+      "name": "rims", 
+      "icon": "fa-thermometer-quarter"
     }
   ]
 }
