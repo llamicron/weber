@@ -3,86 +3,10 @@ var app = new Vue({
   data: {
     pid: {
       "pid_running": true,
-      "pv": 100.2,
-      "sv": 157
+      "pv": 100,
+      "sv": 100
     },
-    relays: [
-      {
-        "state": false,
-        "prettyName": "HLT Valve",
-        "method": {
-          "offArg": 0,
-          "onArg": 1,
-          "name": "hlt"
-        },
-        "verbage": {
-          "1": "Open",
-          "0": "Closed"
-        },
-        "name": "hlt",
-        "icon": "camera"
-      },
-      {
-        "state": true,
-        "prettyName": "HLT To Boil",
-        "method": {
-          "offArg": "boil",
-          "onArg": "mash",
-          "name": "hlt_to"
-        },
-        "verbage": {
-          "1": "To Boil",
-          "0": "To Mash"
-        },
-        "name": "hltToMash",
-        "icon": "donut_small"
-      },
-      {
-        "state": true,
-        "prettyName": "Pump",
-        "method": {
-          "offArg": 0,
-          "onArg": 1,
-          "name": "pump"
-        },
-        "verbage": {
-          "1": "On",
-          "0": "Off"
-        },
-        "name": "pump",
-        "icon": "camera"
-      },
-      {
-        "state": true,
-        "prettyName": "RIMS To Boil",
-        "method": {
-          "offArg": "boil",
-          "onArg": "mash",
-          "name": "rims_to"
-        },
-        "verbage": {
-          "1": "To Boil",
-          "0": "To Mash"
-        },
-        "name": "rimsToMash",
-        "icon": "donut_small"
-      },
-      {
-        "state": false,
-        "prettyName": "RIMS Heater",
-        "method": {
-          "offArg": 0,
-          "onArg": 1,
-          "name": "pid"
-        },
-        "verbage": {
-          "1": "On",
-          "0": "Off"
-        },
-        "name": "rims",
-        "icon": "flash_on"
-      }
-    ],
+    relays: [],
     timer: 0,
     timerInput: null,
     timerUnit: "minutes",
@@ -176,6 +100,16 @@ var app = new Vue({
           console.log(error);
         });
 
+    },
+
+    getPidInfo() {
+      axios.get('/pid')
+        .then(response => {
+          this.pid = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   },
 
@@ -185,6 +119,9 @@ var app = new Vue({
     window.setInterval(() => {
       this.getRelayList();
     }, 1000);
+    window.setInterval(() => {
+      this.getPidInfo();
+    }, 3000)
   },
 
   ready() {
