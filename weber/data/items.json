@@ -4,7 +4,7 @@
         "type": "binary",
         "name": "hlt",
         "state": 0,
-        "icon": "fa-superpowers",
+        "icon": "camera",
         "stateVerbage": {
           "1": "open",
           "0": "closed"
@@ -15,7 +15,7 @@
         "type": "binary",
         "name": "pump",
         "state": 0,
-        "icon": "fa-superpowers",
+        "icon": "camera",
         "stateVerbage": {
           "1": "on",
           "0": "off"
@@ -26,7 +26,7 @@
         "type": "binary",
         "name": "rims",
         "state": 0,
-        "icon": "fa-thermometer-quarter",
+        "icon": "flash_on",
         "stateVerbage": {
           "1": "on",
           "0": "off"
@@ -37,7 +37,7 @@
         "type": "divert",
         "name": "hltDivert",
         "location": "1",
-        "icon": "fa-superpowers",
+        "icon": "donut_small",
         "locationVerbage": {
           "1": "mash",
           "0": "boil"
@@ -48,7 +48,7 @@
         "type": "divert",
         "name": "rimsDivert",
         "location": "1",
-        "icon": "fa-superpowers",
+        "icon": "donut_small",
         "locationVerbage": {
           "1": "mash",
           "0": "boil"
@@ -59,7 +59,7 @@
         "type": "method",
         "name": "sleep",
         "prettyName": "Wait",
-        "icon": "fa-hourglass-start",
+        "icon": "hourglass-full",
         "desc": "Wait for this amount of seconds",
         "args": [
           "duration"
@@ -72,7 +72,7 @@
         "name": "watch",
         "prettyName": "Watch Until",
         "desc": "Wait until PV is this value or greater",
-        "icon": "fa-cubes",
+        "icon": "search",
         "args": [
           "pv"
         ],
@@ -84,7 +84,7 @@
         "name": "slack",
         "prettyName": "Send in Slack",
         "desc": "Sends a message in slack",
-        "icon": "fa-paper-plane",
+        "icon": "send",
         "args": [
           "Message"
         ],

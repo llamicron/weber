@@ -1,59 +1,79 @@
 {
   "relays": [
     {
-      "state": true, 
-      "prettyName": "HLT Valve", 
+      "state": true,
+      "prettyName": "HLT Valve",
       "method": {
-        "offArg": 0, 
-        "onArg": 1, 
+        "offArg": 0,
+        "onArg": 1,
         "name": "hlt"
-      }, 
-      "name": "hlt", 
-      "icon": "fa-superpowers"
-    }, 
+      },
+      "verbage": {
+        1: "Open",
+        0: "Closed"
+      },
+      "name": "hlt",
+      "icon": "camera"
+    },
     {
-      "state": true, 
-      "prettyName": "HLT To Boil", 
+      "state": true,
+      "prettyName": "HLT To Boil",
       "method": {
-        "offArg": "boil", 
-        "onArg": "mash", 
+        "offArg": "boil",
+        "onArg": "mash",
         "name": "hlt_to"
-      }, 
-      "name": "hltToMash", 
-      "icon": "fa-superpowers"
-    }, 
+      },
+      "verbage": {
+        1: "To Boil",
+        0: "To Mash"
+      },
+      "name": "hltToMash",
+      "icon": "donut_small"
+    },
     {
-      "state": true, 
-      "prettyName": "Pump", 
+      "state": true,
+      "prettyName": "Pump",
       "method": {
-        "offArg": 0, 
-        "onArg": 1, 
+        "offArg": 0,
+        "onArg": 1,
         "name": "pump"
-      }, 
-      "name": "pump", 
-      "icon": "fa-superpowers"
-    }, 
+      },
+      "verbage": {
+        1: "On",
+        0: "Off"
+      },
+      "name": "pump",
+      "icon": "camera"
+    },
     {
-      "state": true, 
-      "prettyName": "RIMS To Boil", 
+      "state": true,
+      "prettyName": "RIMS To Boil",
       "method": {
-        "offArg": "boil", 
-        "onArg": "mash", 
+        "offArg": "boil",
+        "onArg": "mash",
         "name": "rims_to"
-      }, 
-      "name": "rimsToMash", 
-      "icon": "fa-superpowers"
-    }, 
+      },
+      "verbage": {
+        1: "To Boil",
+        0: "To Mash"
+      },
+      "name": "rimsToMash",
+      "icon": "donut_small"
+    },
     {
-      "state": false, 
-      "prettyName": "RIMS Heater", 
+      "state": false,
+      "prettyName": "RIMS Heater",
       "method": {
-        "offArg": 0, 
-        "onArg": 1, 
+        "offArg": 0,
+        "onArg": 1,
         "name": "pid"
-      }, 
-      "name": "rims", 
-      "icon": "fa-thermometer-quarter"
+      },
+      "verbage": {
+        1: "On",
+        0: "Off"
+      },
+      "name": "rims",
+      "icon": "flash_on"
     }
   ]
 }
