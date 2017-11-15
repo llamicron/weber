@@ -1,7 +1,7 @@
 {
   "relays": [
     {
-      "state": true,
+      "state": false,
       "prettyName": "HLT Valve",
       "method": {
         "offArg": 0,

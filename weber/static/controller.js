@@ -85,6 +85,14 @@ var app = new Vue({
     },
 
     updateTempChart() {
+      if (tempChart.data.datasets[0].data.length > 10) {
+        tempChart.data.datasets[0].data.shift();
+        tempChart.data.labels.shift();
+      }
+      if (tempChart.data.datasets[1].data.length > 10) {
+        tempChart.data.datasets[1].data.shift();
+      }
+
       tempChart.data.labels.push(new Date().toLocaleTimeString());
       tempChart.data.datasets[0].data.push(this.pid.pv);
 
@@ -115,6 +123,16 @@ var app = new Vue({
 
     pidUpdateInterval() {
       return parseInt(this.pidUpdateIntervalLength) * 1000;
+    },
+
+    toggleRelay(relay) {
+      axios.post('/set-relay', {
+        relay: relay
+      }).then(response => {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   },
 

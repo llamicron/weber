@@ -50,7 +50,6 @@ def set_relay():
         run(method['onArg'])
 
     json_handler.update_relays()
-
     return "True"
 
 
