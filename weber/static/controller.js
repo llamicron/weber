@@ -10,7 +10,8 @@ var app = new Vue({
     timer: 0,
     timerInput: null,
     timerUnit: "minutes",
-    timeString: "Done."
+    timeString: "Done.",
+    pidUpdateIntervalLength: 3,
   },
 
   methods: {
@@ -110,18 +111,22 @@ var app = new Vue({
         .catch(function (error) {
           console.log(error);
         });
+    },
+
+    pidUpdateInterval() {
+      return parseInt(this.pidUpdateIntervalLength) * 1000;
     }
   },
 
 
   mounted() {
     this.setTempBars();
-    window.setInterval(() => {
+    this.relayUpdator = window.setInterval(() => {
       this.getRelayList();
     }, 1000);
-    window.setInterval(() => {
+    this.pidUpdator = window.setInterval(() => {
       this.getPidInfo();
-    }, 3000)
+    }, this.pidUpdateInterval())
   },
 
   ready() {
@@ -135,6 +140,14 @@ var app = new Vue({
         this.updateTempChart();
       },
       deep: true
+    },
+    pidUpdateIntervalLength: {
+      handler() {
+        window.clearInterval(this.pidUpdator);
+        this.pidUpdator = window.setInterval(() => {
+          this.getPidInfo();
+        }, this.pidUpdateInterval())
+      }
     }
   }
 })
