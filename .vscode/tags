@@ -5,6 +5,7 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 Controller	../weber/json_handler.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:2
+Controller	../weber/weber.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:4
 CustomFlask	../weber/weber.py	/^class CustomFlask(Flask):$/;"	kind:class	line:8
 Flask	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:3
 Handler	../weber/json_handler.py	/^class Handler():$/;"	kind:class	line:4
@@ -15,6 +16,7 @@ block_end_string	../weber/weber.py	/^        block_end_string='%)',$/;"	kind:var
 block_start_string	../weber/weber.py	/^        block_start_string='(%',$/;"	kind:variable	line:11
 comment_end_string	../weber/weber.py	/^        comment_end_string='#)',$/;"	kind:variable	line:16
 comment_start_string	../weber/weber.py	/^        comment_start_string='(#',$/;"	kind:variable	line:15
+con	../weber/weber.py	/^con = Controller()$/;"	kind:variable	line:21
 dated_url_for	../weber/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:96
 index	../weber/weber.py	/^def index():$/;"	kind:function	line:26
 jinja_options	../weber/weber.py	/^    jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:9

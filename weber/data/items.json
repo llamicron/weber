@@ -59,7 +59,7 @@
         "type": "method",
         "name": "sleep",
         "prettyName": "Wait",
-        "icon": "hourglass-full",
+        "icon": "hourglass_full",
         "desc": "Wait for this amount of seconds",
         "args": [
           "duration"
