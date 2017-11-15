@@ -6,6 +6,7 @@ var app = new Vue({
       "pv": 100,
       "sv": 100
     },
+    newSVTemp: "",
     relays: [],
     timer: 0,
     timerInput: null,
@@ -133,6 +134,17 @@ var app = new Vue({
       }).catch(function (error) {
         console.log(error);
       });
+    },
+
+    setNewSVTemp() {
+      axios.post('/set-sv', {
+        sv: parseFloat(this.newSVTemp)
+      }).then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log(error);
+      });
+      this.newSVTemp = "";
     }
   },
 
