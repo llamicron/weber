@@ -9,8 +9,8 @@
         "name": "hlt"
       },
       "verbage": {
-        1: "Open",
-        0: "Closed"
+        "1": "Open",
+        "0": "Closed"
       },
       "name": "hlt",
       "icon": "camera"
@@ -24,8 +24,8 @@
         "name": "hlt_to"
       },
       "verbage": {
-        1: "To Boil",
-        0: "To Mash"
+        "1": "To Boil",
+        "0": "To Mash"
       },
       "name": "hltToMash",
       "icon": "donut_small"
@@ -39,8 +39,8 @@
         "name": "pump"
       },
       "verbage": {
-        1: "On",
-        0: "Off"
+        "1": "On",
+        "0": "Off"
       },
       "name": "pump",
       "icon": "camera"
@@ -54,8 +54,8 @@
         "name": "rims_to"
       },
       "verbage": {
-        1: "To Boil",
-        0: "To Mash"
+        "1": "To Boil",
+        "0": "To Mash"
       },
       "name": "rimsToMash",
       "icon": "donut_small"
@@ -69,8 +69,8 @@
         "name": "pid"
       },
       "verbage": {
-        1: "On",
-        0: "Off"
+        "1": "On",
+        "0": "Off"
       },
       "name": "rims",
       "icon": "flash_on"

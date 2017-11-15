@@ -79,7 +79,7 @@ def serve_items():
 
 @app.route('/relay-list', methods=["GET"])
 def serve_relay_list():
-    with open('weber/data/relays.json', 'r') as file:
+    with open("weber/data/relays.json", 'r') as file:
         return json.dumps(json.load(file))
 
 

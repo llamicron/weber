@@ -8,7 +8,7 @@ var app = new Vue({
     },
     relays: [
       {
-        "state": true,
+        "state": false,
         "prettyName": "HLT Valve",
         "method": {
           "offArg": 0,
@@ -16,23 +16,23 @@ var app = new Vue({
           "name": "hlt"
         },
         "verbage": {
-          true: "Open",
-          false: "Closed"
+          "1": "Open",
+          "0": "Closed"
         },
         "name": "hlt",
         "icon": "camera"
       },
       {
         "state": true,
-        "prettyName": "HLT Divert",
+        "prettyName": "HLT To Boil",
         "method": {
           "offArg": "boil",
           "onArg": "mash",
           "name": "hlt_to"
         },
         "verbage": {
-          true: "To Boil",
-          false: "To Mash"
+          "1": "To Boil",
+          "0": "To Mash"
         },
         "name": "hltToMash",
         "icon": "donut_small"
@@ -46,23 +46,23 @@ var app = new Vue({
           "name": "pump"
         },
         "verbage": {
-          true: "On",
-          false: "Off"
+          "1": "On",
+          "0": "Off"
         },
         "name": "pump",
         "icon": "camera"
       },
       {
         "state": true,
-        "prettyName": "RIMS Divert",
+        "prettyName": "RIMS To Boil",
         "method": {
           "offArg": "boil",
           "onArg": "mash",
           "name": "rims_to"
         },
         "verbage": {
-          true: "To Boil",
-          false: "To Mash"
+          "1": "To Boil",
+          "0": "To Mash"
         },
         "name": "rimsToMash",
         "icon": "donut_small"
@@ -76,8 +76,8 @@ var app = new Vue({
           "name": "pid"
         },
         "verbage": {
-          true: "On",
-          false: "Off"
+          "1": "On",
+          "0": "Off"
         },
         "name": "rims",
         "icon": "flash_on"
@@ -165,12 +165,30 @@ var app = new Vue({
 
       tempChart.data.datasets[1].data.push(this.pid.sv);
       tempChart.update();
+    },
+
+    getRelayList() {
+      axios.get('/relay-list')
+        .then(response => {
+          this.relays = response.data.relays;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
     }
   },
 
 
   mounted() {
     this.setTempBars();
+    window.setInterval(() => {
+      this.getRelayList();
+    }, 1000);
+  },
+
+  ready() {
+    this.getRelayList();
   },
 
   watch: {
