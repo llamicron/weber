@@ -9,7 +9,7 @@ class Handler():
             'items': 'items.json'
         }
         self.data_dir = "weber/data/"
-        self.con = Controller.simulator()
+        self.con = Controller()
 
     def update_relays(self):
         """

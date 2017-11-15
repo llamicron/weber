@@ -100,6 +100,8 @@
           <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col mdl-cell--hide-phone">
             <!-- Temp Chart -->
             <canvas id="tempChart" width="650" height="400"></canvas>
+            <hr>
+            <label for="pidUpdateIntervalSlider">PID Update Interval</label>
             <input id="pidUpdateIntervalSlider" class="mdl-slider mdl-js-slider" v-model="pidUpdateIntervalLength" type="range" min="3" max="20" value="0" tabindex="0">
             <div class="mdl-tooltip mdl-tooltip--large" for="pidUpdateIntervalSlider">
               {{ pidUpdateIntervalLength }} seconds

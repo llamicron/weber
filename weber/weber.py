@@ -18,7 +18,7 @@ class CustomFlask(Flask):
 
 
 app = CustomFlask(__name__)
-con = Controller.simulator()
+con = Controller()
 json_handler = Handler()
 
 
