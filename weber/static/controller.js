@@ -137,30 +137,34 @@ var app = new Vue({
     },
 
     setNewSVTemp() {
-      axios.post('/set-sv', {
-        sv: parseFloat(this.newSVTemp)
-      }).then(response => {
-        console.log(response);
-      }).catch(error => {
-        console.log(error);
-      });
-      this.newSVTemp = "";
+      if (this.newSVTemp == "" || isNaN(this.newSVTemp) || parseFloat(this.newSVTemp) < 20) {
+        return false;
+      } else {
+        axios.post('/set-sv', {
+          sv: parseFloat(this.newSVTemp)
+        }).then(response => {
+          console.log(response);
+        }).catch(error => {
+          console.log(error);
+        });
+        this.pid.sv = parseFloat(this.newSVTemp);
+        this.newSVTemp = "";
+      }
     }
   },
 
 
   mounted() {
     this.setTempBars();
+    this.getRelayList();
+    this.getPidInfo();
     this.relayUpdator = window.setInterval(() => {
       this.getRelayList();
     }, 1000);
     this.pidUpdator = window.setInterval(() => {
       this.getPidInfo();
     }, this.pidUpdateInterval())
-  },
-
-  ready() {
-    this.getRelayList();
+    fade(document.querySelector('#loading'));
   },
 
   watch: {
@@ -216,3 +220,16 @@ var tempChart = new Chart(ctx, {
     ]
   }
 });
+
+function fade(element) {
+  var op = 1;  // initial opacity
+  var timer = setInterval(function () {
+    if (op <= 0.1) {
+      clearInterval(timer);
+      element.style.display = 'none';
+    }
+    element.style.opacity = op;
+    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+    op -= op * 0.1;
+  }, 50);
+}

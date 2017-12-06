@@ -6,7 +6,7 @@
         "0": "Closed"
       }, 
       "name": "hlt", 
-      "state": false, 
+      "state": true, 
       "prettyName": "HLT Valve", 
       "method": {
         "offArg": 0, 
@@ -21,7 +21,7 @@
         "0": "To Mash"
       }, 
       "name": "hltToMash", 
-      "state": false, 
+      "state": true, 
       "prettyName": "HLT To Boil", 
       "method": {
         "offArg": "boil", 
@@ -51,7 +51,7 @@
         "0": "To Mash"
       }, 
       "name": "rimsToMash", 
-      "state": true, 
+      "state": false, 
       "prettyName": "RIMS To Boil", 
       "method": {
         "offArg": "boil", 
