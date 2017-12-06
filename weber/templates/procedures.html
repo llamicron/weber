@@ -140,7 +140,7 @@
                   <th class="mdl-data-table__cell--non-numeric">Options</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody v-sortable>
                 <tr v-for="item in tableItems">
                   <td class="mdl-data-table__cell--non-numeric">
                     <i class="material-icons">{{ item.icon }}</i>
@@ -153,13 +153,14 @@
                 </tr>
               </tbody>
             </table>
-
           </div>
         </div>
       </main>
     </div>
   </div>
 
+  <script src="(( url_for('static', filename='sortable.js') ))"></script>
+  <script src="(( url_for('static', filename='vue-sortable.js') ))"></script>
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <script src="(( url_for('static', filename='vue.js') ))"></script>
   <script src="(( url_for('static', filename='procedures.js') ))"></script>

@@ -1,3 +1,9 @@
+Vue.directive('sortable', {
+  inserted: function (el, binding) {
+    new Sortable(el, binding.value || {})
+  }
+})
+
 var app = new Vue({
   el: '#procedures',
   data: {
