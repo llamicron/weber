@@ -133,7 +133,15 @@ html, body {
 }
 
 #timer-duration-label {
-  color: lightgrey;
+  color: white;
+}
+
+#slack-message-label {
+  color: white;
+}
+
+#timer-card {
+  margin-top: 2em;
 }
 
 #timer-title-column, #time-remaining-wrapper {

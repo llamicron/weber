@@ -13,6 +13,8 @@ var app = new Vue({
     timerUnit: "minutes",
     timeString: "Done.",
     pidUpdateIntervalLength: 3,
+    slack_message: "",
+    sendWhenDone: false
   },
 
   methods: {
@@ -67,6 +69,7 @@ var app = new Vue({
 
     cancelTimer() {
       this.endTime = this.now() - 2;
+      this.slack_message = "";
     },
 
     now() {
@@ -77,6 +80,9 @@ var app = new Vue({
       if (this.timeRemaining < 0) {
         this.timeString = "Done.";
         return true;
+      }
+      if (this.timeRemaining == 1 && this.sendWhenDone) {
+        this.sendInSlack();
       }
       seconds = this.timeRemaining % 60;
       var formattedSeconds = ("0" + seconds).slice(-2);
@@ -150,6 +156,23 @@ var app = new Vue({
         this.pid.sv = parseFloat(this.newSVTemp);
         this.newSVTemp = "";
       }
+    },
+
+    sendInSlack() {
+      if (this.slack_message == "") {
+        console.log("Slack message empty. Not sending.");
+        return false;
+      }
+      axios.post('/slack', {
+        message: this.slack_message
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      this.slack_message = "";
     }
   },
 
@@ -161,7 +184,7 @@ var app = new Vue({
     this.relayUpdator = window.setInterval(() => {
       this.getRelayList();
     }, 1000);
-    this.pidUpdator = window.setInterval(() => {
+    this.pidUpdator= window.setInterval(() => {
       this.getPidInfo();
     }, this.pidUpdateInterval())
     fade(document.querySelector('#loading'));

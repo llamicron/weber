@@ -67,7 +67,7 @@ def set_sv():
 def send_in_slack():
     message = request.get_json()['message']
     con.slack.send(message)
-    return 'true'
+    return "True"
 
 
 # Resources
@@ -85,7 +85,6 @@ def serve_relay_list():
 @app.route('/pid', methods=["GET"])
 def serve_pid_data():
     return json.dumps(con.pid_status())
-
 
 @app.context_processor
 def override_url_for():

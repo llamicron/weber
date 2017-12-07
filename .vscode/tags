@@ -17,7 +17,7 @@ block_start_string	../weber/weber.py	/^        block_start_string='(%',$/;"	kind
 comment_end_string	../weber/weber.py	/^        comment_end_string='#)',$/;"	kind:variable	line:16
 comment_start_string	../weber/weber.py	/^        comment_start_string='(#',$/;"	kind:variable	line:15
 con	../weber/weber.py	/^con = Controller()$/;"	kind:variable	line:21
-dated_url_for	../weber/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:95
+dated_url_for	../weber/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:98
 index	../weber/weber.py	/^def index():$/;"	kind:function	line:26
 jinja_options	../weber/weber.py	/^    jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:9
 json	../weber/json_handler.py	/^import json$/;"	kind:namespace	line:1
@@ -25,7 +25,7 @@ json	../weber/weber.py	/^import json$/;"	kind:namespace	line:1
 json_handler	../weber/weber.py	/^json_handler = Handler()$/;"	kind:variable	line:22
 json_handler.py	../weber/json_handler.py	1;"	kind:file	line:1
 os	../weber/weber.py	/^import os$/;"	kind:namespace	line:2
-override_url_for	../weber/weber.py	/^def override_url_for():$/;"	kind:function	line:91
+override_url_for	../weber/weber.py	/^def override_url_for():$/;"	kind:function	line:94
 procedures	../weber/weber.py	/^def procedures():$/;"	kind:function	line:36
 redirect	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:3
 redirect_home	../weber/weber.py	/^def redirect_home():$/;"	kind:function	line:31
@@ -35,6 +35,7 @@ send_in_slack	../weber/weber.py	/^def send_in_slack():$/;"	kind:function	line:67
 serve_items	../weber/weber.py	/^def serve_items():$/;"	kind:function	line:75
 serve_pid_data	../weber/weber.py	/^def serve_pid_data():$/;"	kind:function	line:86
 serve_relay_list	../weber/weber.py	/^def serve_relay_list():$/;"	kind:function	line:80
+serve_slack_webhook	../weber/weber.py	/^def serve_slack_webhook():$/;"	kind:function	line:90
 set_relay	../weber/weber.py	/^def set_relay():$/;"	kind:function	line:41
 set_sv	../weber/weber.py	/^def set_sv():$/;"	kind:function	line:57
 to_vue	../weber/json_handler.py	/^    def to_vue(self, file):$/;"	kind:member	line:32
