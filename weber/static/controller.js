@@ -55,20 +55,24 @@ var app = new Vue({
       }
     },
 
-    setTimer() {
-      this.timer = this.getInputTimeInSeconds();
-      this.endTime = this.now() + this.timer;
-      this.timeRemaining = this.timer;
-      this.timerInput = "";
-
+    startTimerInterval() {
       window.setInterval(() => {
-        this.timeRemaining = this.endTime - this.now();
+        this.timeRemaining = Cookies.get('endTime') - this.now();
         this.setTimeString();
       }, 1000);
     },
 
+    setTimer() {
+      this.timer = this.getInputTimeInSeconds();
+      Cookies.set('endTime', this.now() + this.timer);
+      this.timeRemaining = this.timer;
+      this.timerInput = "";
+
+      this.startTimerInterval();
+    },
+
     cancelTimer() {
-      this.endTime = this.now() - 2;
+      Cookies.set('endTime', this.now() - 2);
       this.slack_message = "";
     },
 
@@ -187,6 +191,11 @@ var app = new Vue({
     this.pidUpdator= window.setInterval(() => {
       this.getPidInfo();
     }, this.pidUpdateInterval())
+
+    if ((Cookies.get('endTime') - this.now()) > 0) {
+      this.startTimerInterval();
+    }
+
     fade(document.querySelector('#loading'));
   },
 
