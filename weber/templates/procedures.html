@@ -105,7 +105,7 @@
                 </tr>
               </thead>
               <tbody id="sortable">
-                <tr v-for="item in tableItems" :key="item.id">
+                <tr v-for="item in tableItems" :id="item.id" :key="item.id">
                   <td>
                     <a href="#" style="color: black">
                       <i @click="removeElement(item)" class="material-icons">close</i>
@@ -139,9 +139,6 @@
             <button class="mdl-button mdl-js-button mdl-button--primary">
               Save
             </button>
-            <pre>
-              {{ tableItems }}
-            </pre>
           </div>
         </div>
       </main>
