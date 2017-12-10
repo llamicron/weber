@@ -6,7 +6,7 @@ var app = new Vue({
       "pv": 100,
       "sv": 100
     },
-    newSVTemp: "",
+    newSVInput: "",
     relays: [],
     timer: 0,
     timerInput: null,
@@ -146,19 +146,19 @@ var app = new Vue({
       });
     },
 
-    setNewSVTemp() {
-      if (this.newSVTemp == "" || isNaN(this.newSVTemp) || parseFloat(this.newSVTemp) < 20) {
+    setnewSVInput() {
+      if (this.newSVInput == "" || isNaN(this.newSVInput) || parseFloat(this.newSVInput) < 20) {
         return false;
       } else {
         axios.post('/set-sv', {
-          sv: parseFloat(this.newSVTemp)
+          sv: parseFloat(this.newSVInput)
         }).then(response => {
           console.log(response);
         }).catch(error => {
           console.log(error);
         });
-        this.pid.sv = parseFloat(this.newSVTemp);
-        this.newSVTemp = "";
+        this.pid.sv = parseFloat(this.newSVInput);
+        this.newSVInput = "";
       }
     },
 
