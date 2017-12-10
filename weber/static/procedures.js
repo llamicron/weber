@@ -11,7 +11,19 @@ var app = new Vue({
     procedureName: "",
     items: [],
     tableItems: [
-
+      {
+        "type": "binary",
+        "name": "hlt",
+        "state": 0,
+        "icon": "camera",
+        "stateVerbage": {
+          "1": "open",
+          "0": "closed"
+        },
+        "prettyName": "HLT Valve",
+        "desc": "Opens/closes the HLT Valve",
+        "id": 3
+      },
     ],
     search: {
       term: '',

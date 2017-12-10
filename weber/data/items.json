@@ -1,97 +1,97 @@
 {
   "items": [
-      {
-        "type": "binary",
-        "name": "hlt",
-        "state": 0,
-        "icon": "camera",
-        "stateVerbage": {
-          "1": "open",
-          "0": "closed"
-        },
-        "prettyName": "HLT Valve",
-        "desc": "Opens/closes the HLT Valve"
+    {
+      "type": "binary",
+      "name": "hlt",
+      "state": 0,
+      "icon": "camera",
+      "stateVerbage": {
+        "1": "open",
+        "0": "closed"
       },
-      {
-        "type": "binary",
-        "name": "pump",
-        "state": 0,
-        "icon": "camera",
-        "stateVerbage": {
-          "1": "on",
-          "0": "off"
-        },
-        "prettyName": "Pump",
-        "desc": "Turns the pump on or off"
+      "prettyName": "HLT Valve",
+      "desc": "Opens/closes the HLT Valve"
+    },
+    {
+      "type": "binary",
+      "name": "pump",
+      "state": 0,
+      "icon": "camera",
+      "stateVerbage": {
+        "1": "on",
+        "0": "off"
       },
-      {
-        "type": "binary",
-        "name": "rims",
-        "state": 0,
-        "icon": "flash_on",
-        "stateVerbage": {
-          "1": "on",
-          "0": "off"
-        },
-        "prettyName": "RIMS Heater",
-        "desc": "Turns the RIMS Heater on or off"
+      "prettyName": "Pump",
+      "desc": "Turns the pump on or off"
+    },
+    {
+      "type": "binary",
+      "name": "rims",
+      "state": 0,
+      "icon": "flash_on",
+      "stateVerbage": {
+        "1": "on",
+        "0": "off"
       },
-      {
-        "type": "divert",
-        "name": "hltDivert",
-        "location": "1",
-        "icon": "donut_small",
-        "locationVerbage": {
-          "1": "mash",
-          "0": "boil"
-        },
-        "prettyName": "HLT Divert Valve",
-        "desc": "Diverts the HLT tank to mash or boil"
+      "prettyName": "RIMS Heater",
+      "desc": "Turns the RIMS Heater on or off"
+    },
+    {
+      "type": "divert",
+      "name": "hltDivert",
+      "location": "1",
+      "icon": "donut_small",
+      "locationVerbage": {
+        "1": "mash",
+        "0": "boil"
       },
-      {
-        "type": "divert",
-        "name": "rimsDivert",
-        "location": "1",
-        "icon": "donut_small",
-        "locationVerbage": {
-          "1": "mash",
-          "0": "boil"
-        },
-        "prettyName": "RIMS Divert Valve",
-        "desc": "Diverts the RIMS path to mash (circulate) or boil"
+      "prettyName": "HLT Divert Valve",
+      "desc": "Diverts the HLT tank to mash or boil"
+    },
+    {
+      "type": "divert",
+      "name": "rimsDivert",
+      "location": "1",
+      "icon": "donut_small",
+      "locationVerbage": {
+        "1": "mash",
+        "0": "boil"
       },
-      {
-        "type": "method",
-        "name": "sleep",
-        "prettyName": "Wait",
-        "icon": "hourglass_full",
-        "desc": "Wait for this amount of minutes",
-        "args": [
-          "duration"
-        ],
-        "inputType": "tel",
-        "inputLabel": "A Number...",
-        "value": null
-      },
-      {
-        "type": "method",
-        "name": "watch",
-        "prettyName": "Watch Until",
-        "desc": "Wait until PV is this value or greater",
-        "icon": "search"
-      },
-      {
-        "type": "method",
-        "name": "slack",
-        "prettyName": "Send in Slack",
-        "desc": "Sends a message in slack",
-        "icon": "send",
-        "args": [
-          "Message"
-        ],
-        "inputType": "text",
-        "inputLabel": "A Message for Slack...",
-        "value": null
-      }
+      "prettyName": "RIMS Divert Valve",
+      "desc": "Diverts the RIMS path to mash (circulate) or boil"
+    },
+    {
+      "type": "method",
+      "name": "sleep",
+      "prettyName": "Wait",
+      "icon": "hourglass_full",
+      "desc": "Wait for this amount of minutes",
+      "args": [
+        "duration"
+      ],
+      "inputType": "tel",
+      "inputLabel": "A Number...",
+      "value": null
+    },
+    {
+      "type": "method",
+      "name": "watch",
+      "prettyName": "Watch Until",
+      "desc": "Wait until PV is this value or greater",
+      "icon": "search"
+    },
+    {
+      "type": "method",
+      "name": "slack",
+      "prettyName": "Send in Slack",
+      "desc": "Sends a message in slack",
+      "icon": "send",
+      "args": [
+        "Message"
+      ],
+      "inputType": "text",
+      "inputLabel": "A Message for Slack...",
+      "value": null
+    }
   ]
 }
