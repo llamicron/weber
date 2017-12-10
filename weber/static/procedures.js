@@ -68,6 +68,10 @@ var app = new Vue({
 
     updateOrder(event) {
       this.tableItems.splice(event.newIndex, 0, this.tableItems.splice(event.oldIndex, 1)[0])
+    },
+
+    removeElement(item) {
+      this.tableItems.splice(this.tableItems.indexOf(item), 1);
     }
   },
 

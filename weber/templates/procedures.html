@@ -106,7 +106,9 @@
               <tbody v-sortable="{ onUpdate: updateOrder }">
                 <tr v-for="item in tableItems">
                   <td>
-                    <i class="material-icons">close</i>
+                    <a href="#" style="color: black">
+                      <i @click="removeElement(item)" class="material-icons">close</i>
+                    </a>
                   </td>
                   <td class="mdl-data-table__cell--non-numeric">
                     <i class="material-icons">{{ item.icon }}</i>
