@@ -1,5 +1,6 @@
 import json
 import os
+
 from flask import Flask, render_template, url_for, redirect, request
 from brewer.controller import Controller
 from json_handler import Handler
@@ -78,8 +79,7 @@ def serve_items():
 
 @app.route('/relay-list', methods=["GET"])
 def serve_relay_list():
-    with open("weber/data/relays.json", 'r') as file:
-        return json.dumps(json.load(file))
+    return json_handler.to_vue("relays")
 
 
 @app.route('/pid', methods=["GET"])

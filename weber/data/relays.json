@@ -2,77 +2,77 @@
   "relays": [
     {
       "verbage": {
-        "1": "Open", 
+        "1": "Open",
         "0": "Closed"
-      }, 
-      "name": "hlt", 
-      "state": false, 
-      "prettyName": "HLT Valve", 
+      },
+      "name": "hlt",
+      "state": false,
+      "prettyName": "HLT Valve",
       "method": {
-        "offArg": 0, 
-        "onArg": 1, 
+        "offArg": 0,
+        "onArg": 1,
         "name": "hlt"
-      }, 
+      },
       "icon": "camera"
-    }, 
+    },
     {
       "verbage": {
-        "1": "To Boil", 
+        "1": "To Boil",
         "0": "To Mash"
-      }, 
-      "name": "hltToMash", 
-      "state": false, 
-      "prettyName": "HLT To Boil", 
+      },
+      "name": "hltToMash",
+      "state": true,
+      "prettyName": "HLT To Boil",
       "method": {
-        "offArg": "boil", 
-        "onArg": "mash", 
+        "offArg": "boil",
+        "onArg": "mash",
         "name": "hlt_to"
-      }, 
+      },
       "icon": "donut_small"
-    }, 
+    },
     {
       "verbage": {
-        "1": "On", 
+        "1": "On",
         "0": "Off"
-      }, 
-      "name": "pump", 
-      "state": false, 
-      "prettyName": "Pump", 
+      },
+      "name": "pump",
+      "state": true,
+      "prettyName": "Pump",
       "method": {
-        "offArg": 0, 
-        "onArg": 1, 
+        "offArg": 0,
+        "onArg": 1,
         "name": "pump"
-      }, 
+      },
       "icon": "camera"
-    }, 
+    },
     {
       "verbage": {
-        "1": "To Boil", 
+        "1": "To Boil",
         "0": "To Mash"
-      }, 
-      "name": "rimsToMash", 
-      "state": false, 
-      "prettyName": "RIMS To Boil", 
+      },
+      "name": "rimsToMash",
+      "state": true,
+      "prettyName": "RIMS To Boil",
       "method": {
-        "offArg": "boil", 
-        "onArg": "mash", 
+        "offArg": "boil",
+        "onArg": "mash",
         "name": "rims_to"
-      }, 
+      },
       "icon": "donut_small"
-    }, 
+    },
     {
       "verbage": {
-        "1": "On", 
+        "1": "On",
         "0": "Off"
-      }, 
-      "name": "rims", 
-      "state": false, 
-      "prettyName": "RIMS Heater", 
+      },
+      "name": "rims",
+      "state": false,
+      "prettyName": "RIMS Heater",
       "method": {
-        "offArg": 0, 
-        "onArg": 1, 
+        "offArg": 0,
+        "onArg": 1,
         "name": "pid"
-      }, 
+      },
       "icon": "flash_on"
     }
   ]
