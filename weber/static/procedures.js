@@ -16,13 +16,16 @@ var app = new Vue({
     search: {
       term: '',
       results: []
-    }
+    },
+    id: 0
   },
 
   methods: {
     addSelected(item) {
       // If you don't copy the item, Vue will treat repeat table instances as the same object
       itemCopy = JSON.parse(JSON.stringify(item));
+      itemCopy.id = this.id;
+      this.id++;
       this.tableItems.push(itemCopy);
     },
 
@@ -49,6 +52,10 @@ var app = new Vue({
         }).catch(function (error) {
           console.log(error);
         });
+    },
+
+    updateOrder(event) {
+      this.tableItems.splice(event.newIndex, 0, this.tableItems.splice(event.oldIndex, 1)[0])
     }
   },
 

@@ -28,6 +28,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
   <link rel="stylesheet" href="(( url_for('static', filename='styles.css') ))">
+  <link rel="stylesheet" href="(( url_for('static', filename='getmdl-select.min.css') ))">
+  <script src="(( url_for('static', filename='getmdl-select.min.js') ))"></script>
 </head>
 
 <body>
@@ -37,7 +39,6 @@
       <div id="bottom"></div>
       <div id="line"></div>
     </div>
-    <!-- <div class="mdl-spinner mdl-js-spinner is-active" id="loading-spinner"></div> -->
   </div>
   <div id="procedures">
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -130,7 +131,7 @@
                   <th class="mdl-data-table__cell--non-numeric">Options</th>
                 </tr>
               </thead>
-              <tbody v-sortable>
+              <tbody v-sortable="{ onUpdate: updateOrder }">
                 <tr v-for="item in tableItems">
                   <td class="mdl-data-table__cell--non-numeric">
                     <i class="material-icons">{{ item.icon }}</i>
@@ -138,16 +139,26 @@
                   <td class="mdl-data-table__cell--non-numeric">
                     {{ item.prettyName }}
                   </td>
-                  <td class="mdl-data-table__cell--non-numeric">Lorem</td>
-                  <td class="mdl-data-table__cell--non-numeric">Ipsum</td>
+                  <td class="mdl-data-table__cell--non-numeric">{{ item.desc }}</td>
+                  <td class="mdl-data-table__cell--non-numeric">
+                    <!-- Binary Options -->
+                    <select v-if="item.type == 'binary'" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                      <option value="0">{{ item.stateVerbage['0'] }}</option>
+                      <option value="1">{{ item.stateVerbage['1'] }}</option>
+                    </select>
+                    <!-- Method Option -->
+                    <input v-if="item.type == 'method'" :type="item.inputType" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                    <!-- Divert Option -->
+                    <select v-if="item.type == 'divert'" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                      <option value="0">{{ item.locationVerbage['0'] }}</option>
+                      <option value="1">{{ item.locationVerbage['1'] }}</option>
+                    </select>
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <pre>
-          {{ tableItems }}
-        </pre>
       </main>
     </div>
   </div>

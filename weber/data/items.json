@@ -9,7 +9,8 @@
           "1": "open",
           "0": "closed"
         },
-        "prettyName": "HLT Valve"
+        "prettyName": "HLT Valve",
+        "desc": "Opens/closes the HLT Valve"
       },
       {
         "type": "binary",
@@ -20,7 +21,8 @@
           "1": "on",
           "0": "off"
         },
-        "prettyName": "Pump"
+        "prettyName": "Pump",
+        "desc": "Turns the pump on or off"
       },
       {
         "type": "binary",
@@ -31,7 +33,8 @@
           "1": "on",
           "0": "off"
         },
-        "prettyName": "RIMS Heater"
+        "prettyName": "RIMS Heater",
+        "desc": "Turns the RIMS Heater on or off"
       },
       {
         "type": "divert",
@@ -42,7 +45,8 @@
           "1": "mash",
           "0": "boil"
         },
-        "prettyName": "HLT Divert Valve"
+        "prettyName": "HLT Divert Valve",
+        "desc": "Diverts the HLT tank to mash or boil"
       },
       {
         "type": "divert",
@@ -53,18 +57,20 @@
           "1": "mash",
           "0": "boil"
         },
-        "prettyName": "RIMS Divert Valve"
+        "prettyName": "RIMS Divert Valve",
+        "desc": "Diverts the RIMS path to mash (circulate) or boil"
       },
       {
         "type": "method",
         "name": "sleep",
         "prettyName": "Wait",
         "icon": "hourglass_full",
-        "desc": "Wait for this amount of seconds",
+        "desc": "Wait for this amount of minutes",
         "args": [
           "duration"
         ],
-        "hrType": "Number",
+        "inputType": "tel",
+        "inputLabel": "A Number...",
         "value": null
       },
       {
@@ -72,12 +78,7 @@
         "name": "watch",
         "prettyName": "Watch Until",
         "desc": "Wait until PV is this value or greater",
-        "icon": "search",
-        "args": [
-          "pv"
-        ],
-        "hrType": "Number",
-        "value": null
+        "icon": "search"
       },
       {
         "type": "method",
@@ -88,7 +89,8 @@
         "args": [
           "Message"
         ],
-        "hrType": "Text",
+        "inputType": "text",
+        "inputLabel": "A Message for Slack...",
         "value": null
       }
   ]
