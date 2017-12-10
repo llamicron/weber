@@ -89,3 +89,9 @@ var app = new Vue({
     fade(document.querySelector('#loading'));
   }
 })
+
+
+$(function () {
+  $("#sortable").sortable();
+  $("#sortable").disableSelection();
+});
