@@ -104,7 +104,7 @@
                   <th class="mdl-data-table__cell--non-numeric">Description</th>
                 </tr>
               </thead>
-              <tbody v-sortable="{ onUpdate: updateOrder }">
+              <tbody v-sortable="{ onUpdate: onUpdate }">
                 <tr v-for="item in tableItems">
                   <td>
                     <a href="#" style="color: black">
@@ -139,6 +139,9 @@
             <button class="mdl-button mdl-js-button mdl-button--primary">
               Save
             </button>
+            <pre>
+              {{ tableItems }}
+            </pre>
           </div>
         </div>
       </main>

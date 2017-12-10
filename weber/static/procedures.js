@@ -23,7 +23,7 @@ var app = new Vue({
         "prettyName": "HLT Valve",
         "desc": "Opens/closes the HLT Valve",
         "id": 3
-      },
+      }
     ],
     search: {
       term: '',
@@ -66,8 +66,10 @@ var app = new Vue({
         });
     },
 
-    updateOrder(event) {
-      this.tableItems.splice(event.newIndex, 0, this.tableItems.splice(event.oldIndex, 1)[0])
+    onUpdate(event) {
+      console.log("By Old Index: " + this.tableItems[event.oldIndex].prettyName + " - Index: " + event.oldIndex);
+      console.log("By new index: " + this.tableItems[event.newIndex].prettyName + " - Index: " + event.newIndex);
+      this.tableItems.splice(event.newIndex, 0, this.tableItems.splice(event.oldIndex, 1)[0]);
     },
 
     removeElement(item) {
