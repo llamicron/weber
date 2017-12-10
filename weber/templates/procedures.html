@@ -104,8 +104,8 @@
                   <th class="mdl-data-table__cell--non-numeric">Description</th>
                 </tr>
               </thead>
-              <tbody v-sortable="{ onUpdate: onUpdate }">
-                <tr v-for="item in tableItems">
+              <tbody id="sortable">
+                <tr v-for="item in tableItems" :id="item.id" :key="item.id">
                   <td>
                     <a href="#" style="color: black">
                       <i @click="removeElement(item)" class="material-icons">close</i>
@@ -148,9 +148,10 @@
     </div>
   </div>
 
-  <script src="(( url_for('static', filename='sortable.js') ))"></script>
+  <script src="(( url_for('static', filename='jquery.js') ))"></script>
+  <script src="(( url_for('static', filename='jquery-ui.js') ))"></script>
   <script src="(( url_for('static', filename='loading.js') ))"></script>
-  <script src="(( url_for('static', filename='vue-sortable.js') ))"></script>
+  <!-- <script src="(( url_for('static', filename='vue-sortable.js') ))"></script> -->
   <script src="(( url_for('static', filename='material.min.js') ))"></script>
   <script src="(( url_for('static', filename='vue.js') ))"></script>
   <script src="(( url_for('static', filename='procedures.js') ))"></script>

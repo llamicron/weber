@@ -11,19 +11,6 @@ var app = new Vue({
     procedureName: "",
     items: [],
     tableItems: [
-      {
-        "type": "binary",
-        "name": "hlt",
-        "state": 0,
-        "icon": "camera",
-        "stateVerbage": {
-          "1": "open",
-          "0": "closed"
-        },
-        "prettyName": "HLT Valve",
-        "desc": "Opens/closes the HLT Valve",
-        "id": 3
-      }
     ],
     search: {
       term: '',
@@ -37,6 +24,7 @@ var app = new Vue({
       // If you don't copy the item, Vue will treat repeat table instances as the same object
       itemCopy = JSON.parse(JSON.stringify(item));
       itemCopy.id = this.id;
+      itemCopy.position = this.tableItems.length;
       this.id++;
       this.tableItems.push(itemCopy);
     },
@@ -91,3 +79,26 @@ var app = new Vue({
     fade(document.querySelector('#loading'));
   }
 })
+
+$(function () {
+  $("#sortable").sortable();
+  $("#sortable").disableSelection();
+});
+
+// Note: the app.tableItems array will NOT reorder itself when dragging <tr>s. Instead the 'position` attribute will be changed.
+// This is because vue-sortable is shitty
+
+// Updates Position on drag
+$("#sortable").sortable({
+  update: function () {
+    $('#sortable').children().each(function (newPosition) {
+      element_id = $(this).attr('id')
+      for (let i = 0; i < app.tableItems.length; i++) {
+        const item = app.tableItems[i];
+        if (item.id == element_id) {
+          app.tableItems[i].position = newPosition;
+        }
+      }
+    });
+  }
+});
