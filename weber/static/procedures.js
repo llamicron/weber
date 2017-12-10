@@ -9,6 +9,7 @@ var app = new Vue({
   data: {
     // We need to keep a list of items that is never changed
     procedureName: "",
+    procedureList: [],
     items: [],
     tableItems: [
     ],
@@ -16,7 +17,8 @@ var app = new Vue({
       term: '',
       results: []
     },
-    id: 0
+    id: 0,
+    error: ""
   },
 
   methods: {
@@ -62,6 +64,36 @@ var app = new Vue({
 
     removeElement(item) {
       this.tableItems.splice(this.tableItems.indexOf(item), 1);
+    },
+
+    saveProcedure() {
+      if (this.procedureName == "") {
+        this.error = "Please write a name";
+        return false;
+      }
+
+      axios.post("/save-procedure", {
+        name: this.procedureName,
+        items: this.tableItems
+      })
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+          return false;
+        });
+      return true;
+    },
+
+    getSavedProcedures() {
+      axios.get('/procedure-data')
+      .then(response => {
+        this.procedureList = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
     }
   },
 
@@ -77,6 +109,8 @@ var app = new Vue({
   mounted() {
     this.getItemsFromJson();
     fade(document.querySelector('#loading'));
+
+    this.getSavedProcedures();
   }
 })
 

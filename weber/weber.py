@@ -1,4 +1,5 @@
 import json
+import glob
 import os
 
 from flask import Flask, render_template, url_for, redirect, request
@@ -70,6 +71,24 @@ def send_in_slack():
     con.slack.send(message)
     return "True"
 
+@app.route('/save-procedure', methods=["POST"])
+def save_procedure():
+    name = request.get_json()['name']
+    items = request.get_json()['items']
+
+    # Sanitize filename
+    keepcharacters = ('.', '_', '-')
+    almost_clean = "".join(c for c in name if c.isalnum() or c in keepcharacters).rstrip()
+    file_name = almost_clean.replace(' ', '_').lower()
+    file_name += '.json'
+
+    data = {
+        "name": name,
+        "items": items
+    }
+    with open('weber/data/procedures/' + file_name, 'w') as file:
+        file.write(json.dumps(data, indent=4))
+    return "True"
 
 # Resources
 @app.route("/items", methods=["GET"])
@@ -85,6 +104,16 @@ def serve_relay_list():
 @app.route('/pid', methods=["GET"])
 def serve_pid_data():
     return json.dumps(con.pid_status())
+
+@app.route('/procedure-data', methods=["GET"])
+def serve_procedure_data():
+    file_list = glob.glob('weber/data/procedures' + '/*.json')
+    procedures = []
+    for file_path in file_list:
+        procedures.append(json.load(open(file_path)))
+
+    return json.dumps(procedures)
+
 
 @app.context_processor
 def override_url_for():

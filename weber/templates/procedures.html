@@ -92,6 +92,10 @@
               <input class="mdl-textfield__input" v-model="procedureName" type="text" id="procedureName">
               <label class="mdl-textfield__label" for="procedureName">New Procedure</label>
             </div>
+            <span class="mdl-chip mdl-chip--contact" v-if="error && !procedureName">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">!</span>
+              <span class="mdl-chip__text">{{ error }}</span>
+            </span>
 
             <hr>
             <table id="itemsTable" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
@@ -136,7 +140,7 @@
               </tbody>
             </table>
             <hr>
-            <button class="mdl-button mdl-js-button mdl-button--primary">
+            <button @click="saveProcedure" class="mdl-button mdl-js-button mdl-button--primary">
               Save
             </button>
           </div>
