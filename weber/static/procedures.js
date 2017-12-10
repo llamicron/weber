@@ -61,8 +61,8 @@ var app = new Vue({
     }
   },
 
-
   mounted() {
     this.getItemsFromJson();
+    fade(document.querySelector('#loading'));
   }
 })
