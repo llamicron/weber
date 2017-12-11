@@ -105,7 +105,7 @@
               </span>
             </a>
             <!-- Procedure Select -->
-            <select v-model="procedureName" name="procedureSelect" id="procedureSelect" style="height: 25px; font-size: 16px; width: 43%; margin-top: 1em;">
+            <select v-model="procedureName" name="procedureSelect" id="procedureSelect">
               <option value="">Create a Procedure</option>
               <option v-for="proc in procedureList" v-bind:value="proc.name">{{ proc.name }}</option>
             </select>
@@ -139,7 +139,8 @@
                       <option value="1">{{ item.stateVerbage['1'] }}</option>
                     </select>
                     <!-- Method Option -->
-                    <input v-if="item.type == 'method'" :type="item.inputType" v-model="item.value" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                    <input v-if="item.type == 'method'" class="mdl-textfield__input" :type="item.inputType" v-model="item.value" :placeholder="item.inputLabel" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                    <label class="mdl-textfield__label" :for="item.name + '-' + item.id"></label>
                     <!-- Divert Option -->
                     <select v-if="item.type == 'divert'" v-model="item.value" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
                       <option value="0">{{ item.locationVerbage['0'] }}</option>

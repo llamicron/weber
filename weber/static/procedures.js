@@ -100,6 +100,22 @@ var app = new Vue({
         .catch(error => {
           console.log(error);
         });
+    },
+
+    setCurrentProcedure() {
+      if (this.procedureName == '') {
+        this.tableItems = [];
+        return true;
+      }
+
+      for (let i = 0; i < this.procedureList.length; i++) {
+        const proc = this.procedureList[i];
+        if (proc.name == this.procedureName) {
+          this.tableItems = proc.items;
+          return true;
+        }
+      }
+      return false;
     }
   },
 
@@ -122,19 +138,7 @@ var app = new Vue({
   watch: {
     procedureName: {
       handler: function () {
-        if (this.procedureName == '') {
-          this.tableItems = [];
-          return true;
-        }
-
-        for (let i = 0; i < this.procedureList.length; i++) {
-          const proc = this.procedureList[i];
-          if (proc.name == this.procedureName) {
-            this.tableItems = proc.items;
-            return true;
-          }
-        }
-        return false;
+        this.setCurrentProcedure()
       }
     }
   }

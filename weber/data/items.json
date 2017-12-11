@@ -9,6 +9,7 @@
         "1": "open",
         "0": "closed"
       },
+      "method": "hlt",
       "prettyName": "HLT Valve",
       "value": 0
     },
@@ -21,6 +22,7 @@
         "1": "on",
         "0": "off"
       },
+      "method": "pump",
       "prettyName": "Pump",
       "value": 0
     },
@@ -33,6 +35,7 @@
         "1": "on",
         "0": "off"
       },
+      "method": "pid",
       "prettyName": "RIMS Heater",
       "value": 0
     },
@@ -45,6 +48,7 @@
         "1": "mash",
         "0": "boil"
       },
+      "method": "hlt_to",
       "prettyName": "HLT Divert Valve",
       "value": 0
     },
@@ -57,6 +61,7 @@
         "1": "mash",
         "0": "boil"
       },
+      "method": "rims_to",
       "prettyName": "RIMS Divert Valve",
       "value": 0
     },
@@ -66,9 +71,7 @@
       "prettyName": "Wait",
       "icon": "hourglass_full",
       "desc": "Wait for this amount of minutes",
-      "args": [
-        "duration"
-      ],
+      "method": "sleep",
       "inputType": "tel",
       "inputLabel": "A Number...",
       "value": null
@@ -78,6 +81,8 @@
       "name": "watch",
       "prettyName": "Watch Until",
       "desc": "Wait until PV is this value or greater",
+      "method": "watch",
+      "inputLabel": "Wait until temp >= this",
       "icon": "search"
     },
     {
@@ -86,11 +91,20 @@
       "prettyName": "Send in Slack",
       "desc": "Sends a message in slack",
       "icon": "send",
-      "args": [
-        "Message"
-      ],
+      "method": "send",
       "inputType": "text",
       "inputLabel": "A Message for Slack...",
+      "value": null
+    },
+    {
+      "type": "method",
+      "name": "set_sv",
+      "prettyName": "Set Target Temperature",
+      "desc": "Sets the target temperature",
+      "icon": "whatshot",
+      "method": "set_sv",
+      "inputType": "tel",
+      "inputLabel": "Target Temperature",
       "value": null
     }
   ]
