@@ -10,7 +10,7 @@
         "0": "closed"
       },
       "prettyName": "HLT Valve",
-      "desc": "Opens/closes the HLT Valve"
+      "value": 0
     },
     {
       "type": "binary",
@@ -22,7 +22,7 @@
         "0": "off"
       },
       "prettyName": "Pump",
-      "desc": "Turns the pump on or off"
+      "value": 0
     },
     {
       "type": "binary",
@@ -34,7 +34,7 @@
         "0": "off"
       },
       "prettyName": "RIMS Heater",
-      "desc": "Turns the RIMS Heater on or off"
+      "value": 0
     },
     {
       "type": "divert",
@@ -46,7 +46,7 @@
         "0": "boil"
       },
       "prettyName": "HLT Divert Valve",
-      "desc": "Diverts the HLT tank to mash or boil"
+      "value": 0
     },
     {
       "type": "divert",
@@ -58,7 +58,7 @@
         "0": "boil"
       },
       "prettyName": "RIMS Divert Valve",
-      "desc": "Diverts the RIMS path to mash (circulate) or boil"
+      "value": 0
     },
     {
       "type": "method",

@@ -8,9 +8,9 @@ var app = new Vue({
   el: '#procedures',
   data: {
     // We need to keep a list of items that is never changed
-    procedureName: "",
-    procedureList: [],
     items: [],
+    procedureList: [],
+    procedureName: "",
     tableItems: [
     ],
     search: {
@@ -18,7 +18,7 @@ var app = new Vue({
       results: []
     },
     id: 0,
-    error: ""
+    message: ""
   },
 
   methods: {
@@ -68,7 +68,12 @@ var app = new Vue({
 
     saveProcedure() {
       if (this.procedureName == "") {
-        this.error = "Please write a name";
+        this.message = "Please write a name";
+        return false;
+      }
+
+      if (this.tableItems.length == 0) {
+        this.message = "Please add some items";
         return false;
       }
 
@@ -78,6 +83,7 @@ var app = new Vue({
       })
         .then(response => {
           console.log(response);
+          this.message = "Procedure Saved"
         })
         .catch(error => {
           console.log(error);
@@ -88,12 +94,12 @@ var app = new Vue({
 
     getSavedProcedures() {
       axios.get('/procedure-data')
-      .then(response => {
-        this.procedureList = response.data;
-      })
-      .catch(error => {
-        console.log(error);
-      });
+        .then(response => {
+          this.procedureList = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
 
@@ -111,28 +117,26 @@ var app = new Vue({
     fade(document.querySelector('#loading'));
 
     this.getSavedProcedures();
+  },
+
+  watch: {
+    procedureName: {
+      handler: function () {
+        if (this.procedureName == '') {
+          this.tableItems = [];
+          return true;
+        }
+
+        for (let i = 0; i < this.procedureList.length; i++) {
+          const proc = this.procedureList[i];
+          if (proc.name == this.procedureName) {
+            this.tableItems = proc.items;
+            return true;
+          }
+        }
+        return false;
+      }
+    }
   }
 })
 
-$(function () {
-  $("#sortable").sortable();
-  $("#sortable").disableSelection();
-});
-
-// Note: the app.tableItems array will NOT reorder itself when dragging <tr>s. Instead the 'position` attribute will be changed.
-// This is because vue-sortable is shitty
-
-// Updates Position on drag
-$("#sortable").sortable({
-  update: function () {
-    $('#sortable').children().each(function (newPosition) {
-      element_id = $(this).attr('id')
-      for (let i = 0; i < app.tableItems.length; i++) {
-        const item = app.tableItems[i];
-        if (item.id == element_id) {
-          app.tableItems[i].position = newPosition;
-        }
-      }
-    });
-  }
-});

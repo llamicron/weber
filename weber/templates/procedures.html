@@ -21,12 +21,16 @@
 
   <link rel="shortcut icon" href="(( url_for('static', filename='images/favicon.png') ))">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script> -->
+  <script src="(( url_for('static', filename='Chart.bundle.js') ))"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script> -->
+  <script src="(( url_for('static', filename='axios.min.js') ))"></script>
+
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+  <link rel="stylesheet" href="(( url_for('static', filename='mdl.css') ))">
+  <link rel="stylesheet" href="(( url_for('static', filename='mdl-select.min.css') ))">
   <link rel="stylesheet" href="(( url_for('static', filename='styles.css') ))">
 </head>
 
@@ -90,52 +94,68 @@
           <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--9-col mdl-cell--hide-phone">
             <div class="mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" v-model="procedureName" type="text" id="procedureName">
-              <label class="mdl-textfield__label" for="procedureName">New Procedure</label>
+              <label class="mdl-textfield__label" for="procedureName"></label>
             </div>
-            <span class="mdl-chip mdl-chip--contact" v-if="error && !procedureName">
-              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">!</span>
-              <span class="mdl-chip__text">{{ error }}</span>
-            </span>
+            <a href="#" @click="message = ''" v-if="message">
+              <span class="mdl-chip mdl-chip--contact">
+                <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">!</span>
+                <span class="mdl-chip__text">
+                  {{ message }}
+                </span>
+              </span>
+            </a>
+            <!-- Procedure Select -->
+            <select v-model="procedureName" name="procedureSelect" id="procedureSelect" style="height: 25px; font-size: 16px; width: 43%; margin-top: 1em;">
+              <option value="">Create a Procedure</option>
+              <option v-for="proc in procedureList" v-bind:value="proc.name">{{ proc.name }}</option>
+            </select>
 
             <hr>
             <table id="itemsTable" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
               <thead>
                 <tr>
-                  <th style="width: 1%"></th>
                   <th style="width: 4px;" class="mdl-data-table__cell--non-numeric"></th>
                   <th class="mdl-data-table__cell--non-numeric">Step</th>
                   <th class="mdl-data-table__cell--non-numeric">Options</th>
                   <th class="mdl-data-table__cell--non-numeric">Description</th>
+                  <th style="width: 1%"></th>
                 </tr>
               </thead>
               <tbody id="sortable">
                 <tr v-for="item in tableItems" :id="item.id" :key="item.id">
-                  <td>
-                    <a href="#" style="color: black">
-                      <i @click="removeElement(item)" class="material-icons">close</i>
-                    </a>
-                  </td>
+                  <!-- Icon -->
                   <td class="mdl-data-table__cell--non-numeric">
                     <i class="material-icons">{{ item.icon }}</i>
                   </td>
+                  <!-- Name -->
                   <td class="mdl-data-table__cell--non-numeric">
                     {{ item.prettyName }}
                   </td>
+                  <!-- Inputs -->
                   <td class="mdl-data-table__cell--non-numeric">
                     <!-- Binary Options -->
-                    <select v-if="item.type == 'binary'" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                    <select v-if="item.type == 'binary'" v-model="item.value" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
                       <option value="0">{{ item.stateVerbage['0'] }}</option>
                       <option value="1">{{ item.stateVerbage['1'] }}</option>
                     </select>
                     <!-- Method Option -->
-                    <input v-if="item.type == 'method'" :type="item.inputType" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                    <input v-if="item.type == 'method'" :type="item.inputType" v-model="item.value" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
                     <!-- Divert Option -->
-                    <select v-if="item.type == 'divert'" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                    <select v-if="item.type == 'divert'" v-model="item.value" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
                       <option value="0">{{ item.locationVerbage['0'] }}</option>
                       <option value="1">{{ item.locationVerbage['1'] }}</option>
                     </select>
                   </td>
-                  <td class="mdl-data-table__cell--non-numeric">{{ item.desc }}</td>
+                  <!-- Descriptions -->
+                  <td v-if="item.type == 'binary'" class="mdl-data-table__cell--non-numeric">Set {{ item.prettyName }} to {{ item.stateVerbage[item.value] }}</td>
+                  <td v-if="item.type == 'divert'" class="mdl-data-table__cell--non-numeric">Set {{ item.prettyName }} to {{ item.locationVerbage[item.value] }}</td>
+                  <td v-if="item.type == 'method'" class="mdl-data-table__cell--non-numeric">{{ item.desc }}</td>
+                  <!-- Close button -->
+                  <td>
+                    <a href="#" tabindex="-1" style="color: black">
+                      <i @click="removeElement(item)" class="material-icons">close</i>
+                    </a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -149,11 +169,12 @@
     </div>
   </div>
 
+
   <script src="(( url_for('static', filename='jquery.js') ))"></script>
   <script src="(( url_for('static', filename='jquery-ui.js') ))"></script>
   <script src="(( url_for('static', filename='loading.js') ))"></script>
-  <!-- <script src="(( url_for('static', filename='vue-sortable.js') ))"></script> -->
   <script src="(( url_for('static', filename='material.min.js') ))"></script>
+  <script src="(( url_for('static', filename='mdl-select.min.js') ))"></script>
   <script src="(( url_for('static', filename='vue.js') ))"></script>
   <script src="(( url_for('static', filename='procedures.js') ))"></script>
 </body>
