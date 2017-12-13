@@ -173,13 +173,8 @@ var app = new Vue({
       }
 
       // This needs to be done here because it references other instance variables
-      replacements = {
-        "{current}": this.pid['pv'] + "˚F",
-        "{target}": this.pid['sv'] + "˚F",
-      }
-
-      for (var regex in replacements) {
-        replacement = replacements[regex];
+      for (var regex in this.replacements) {
+        replacement = this.replacements[regex];
         this.slack_message = this.slack_message.replace(regex, replacement);
       }
       return true;
@@ -187,17 +182,27 @@ var app = new Vue({
 
     sendInSlack() {
       this.parseSlackMessage();
-
-      axios.post('/slack', {
-        message: this.slack_message
-      })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      console.log(this.slack_message);
+      // axios.post('/slack', {
+      //   message: this.slack_message
+      // })
+      // .then(response => {
+      //   console.log(response);
+      // })
+      // .catch(error => {
+      //   console.log(error);
+      // });
       this.slack_message = "";
+    }
+  },
+
+  computed: {
+    replacements() {
+      return {
+        "{current}": this.pid['pv'] + "˚F",
+        "{target}": this.pid['sv'] + "˚F",
+        "{time}": new Date().toLocaleTimeString(),
+      }
     }
   },
 
