@@ -14,7 +14,9 @@ var app = new Vue({
     timeString: "Done.",
     pidUpdateIntervalLength: 3,
     slack_message: "",
-    sendWhenDone: false
+    sendWhenDone: false,
+    timeRemaining: -2,
+    showSlackHelp: false
   },
 
   methods: {
@@ -201,6 +203,7 @@ var app = new Vue({
         "{current}": this.pid['pv'] + "˚F",
         "{target}": this.pid['sv'] + "˚F",
         "{time}": new Date().toLocaleTimeString(),
+        "{timer}": Math.round(this.timeRemaining / 60) + " minutes"
       }
     }
   },

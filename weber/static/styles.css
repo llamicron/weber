@@ -102,6 +102,14 @@ input:focus, textarea:focus {
   /* transform: translate(-50%, -50%); */
 }
 
+#slack-help-icon {
+  margin-right: 1em;
+}
+
+.replacement-list {
+  color: white;
+}
+
 /* .blurry {
 
 } */
