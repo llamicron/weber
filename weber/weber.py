@@ -5,6 +5,7 @@ import os
 from flask import Flask, render_template, url_for, redirect, request
 from brewer.controller import Controller
 from json_handler import Handler
+from proc_runner import ProcRunner
 
 
 class CustomFlask(Flask):
@@ -18,26 +19,21 @@ class CustomFlask(Flask):
         comment_end_string='#)',
     ))
 
-
 app = CustomFlask(__name__)
 con = Controller()
 json_handler = Handler()
-
 
 @app.route('/')
 def index():
     return render_template("index.html")
 
-
 @app.route('/controller')
 def redirect_home():
     return redirect("/")
 
-
 @app.route('/procedures')
 def procedures():
     return render_template("procedures.html")
-
 
 @app.route('/set-relay', methods=["POST"])
 def set_relay():
@@ -54,7 +50,6 @@ def set_relay():
     json_handler.update_relays()
     return "True"
 
-
 @app.route('/set-sv', methods=["POST"])
 def set_sv():
     sv = float(request.get_json()['sv'])
@@ -63,7 +58,6 @@ def set_sv():
         return "True"
     else:
         return "False"
-
 
 @app.route('/slack', methods=["POST"])
 def send_in_slack():
@@ -76,11 +70,7 @@ def save_procedure():
     name = request.get_json()['name']
     items = request.get_json()['items']
 
-    # Sanitize filename
-    keepcharacters = ('.', '_', '-')
-    almost_clean = "".join(c for c in name if c.isalnum() or c in keepcharacters).rstrip()
-    file_name = almost_clean.replace(' ', '_').lower()
-    file_name += '.json'
+    file_name = sanitize_filename(name, file_ending=".json")
 
     data = {
         "name": name,
@@ -89,6 +79,28 @@ def save_procedure():
     with open('weber/data/procedures/' + file_name, 'w') as file:
         file.write(json.dumps(data, indent=4))
     return "True"
+
+@app.route('/run-procedure', methods=["POST"])
+def run_procedure():
+    name = request.get_json()['name']
+    file_name = "weber/data/procedures/"
+    file_name += sanitize_filename(name, file_ending=".json")
+
+    proc = json.load(open(file_name, 'r'))
+
+    assert proc['name'] == name
+    assert not proc['items'] == []
+
+    app.runner = ProcRunner(proc['items'])
+    return "True"
+
+@app.route('/run-next-step', methods=["POST"])
+def run_next_step():
+    if not hasattr(app, 'runner'):
+        return "False"
+    app.runner.run_next_step()
+    return json.dumps(app.runner.proc)
+
 
 # Resources
 @app.route("/items", methods=["GET"])
@@ -114,6 +126,12 @@ def serve_procedure_data():
 
     return json.dumps(procedures)
 
+@app.route('/current-step', methods=["GET"])
+def serve_current_step():
+    if not hasattr(app, 'runner'):
+        return "False"
+    return json.dumps(app.runner.proc)
+
 
 @app.context_processor
 def override_url_for():
@@ -128,6 +146,15 @@ def dated_url_for(endpoint, **values):
             values['q'] = int(os.stat(file_path).st_mtime)
     return url_for(endpoint, **values)
 
+
+def sanitize_filename(string, **kwargs):
+    file_ending = kwargs.get('file_ending', "")
+
+    keepcharacters = ('.', '_', '-')
+    almost_clean = "".join(c for c in string if c.isalnum() or c in keepcharacters).rstrip()
+    file_name = almost_clean.replace(' ', '_').lower()
+    file_name += file_ending
+    return file_name
 
 if __name__ == '__main__':
     app.run("0.0.0.0")

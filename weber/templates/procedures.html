@@ -139,7 +139,8 @@
                       <option value="1">{{ item.stateVerbage['1'] }}</option>
                     </select>
                     <!-- Method Option -->
-                    <input v-if="item.type == 'method'" class="mdl-textfield__input" :type="item.inputType" v-model="item.value" :placeholder="item.inputLabel" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
+                    <input v-if="item.type == 'method'" class="mdl-textfield__input" :type="item.inputType" v-model="item.value" :placeholder="item.inputLabel"
+                      :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
                     <label class="mdl-textfield__label" :for="item.name + '-' + item.id"></label>
                     <!-- Divert Option -->
                     <select v-if="item.type == 'divert'" v-model="item.value" :name="item.name + '-' + item.id + '-option'" v-bind:id="item.name + '-' + item.id">
@@ -161,9 +162,14 @@
               </tbody>
             </table>
             <hr>
-            <button @click="saveProcedure" class="mdl-button mdl-js-button mdl-button--primary">
-              Save
-            </button>
+            <div class="container">
+              <button @click="saveProcedure" style="color: white; width: 100px" class="mdl-button mdl-js-ripple-effect mdl-button--raised mdl-js-button mdl-button--primary">
+                Save
+              </button>
+              <button @click="runProcedure" style="color: white; width: 100px" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--primary">
+                Run
+              </button>
+            </div>
           </div>
         </div>
       </main>

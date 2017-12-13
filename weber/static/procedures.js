@@ -116,6 +116,35 @@ var app = new Vue({
         }
       }
       return false;
+    },
+
+    runProcedure() {
+      if (this.tableItems.length < 1 || this.procedureName == "") {
+        this.message = "Please choose a procedure or create one";
+        return false;
+      }
+
+      this.message = "Saving procedure..."
+      this.saveProcedure();
+
+      axios.post('/run-procedure', {
+        name: this.procedureName
+      }).then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log(error);
+      })
+
+    },
+
+    getRemainingStep() {
+      axios.get('/current-step')
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        })
     }
   },
 

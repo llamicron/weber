@@ -133,9 +133,16 @@
                   </li>
                 </ul>
                 <ul v-if="showSlackHelp" id="slack-help" class="demo-list-item mdl-list">
+                  <li class="mdl-list__item replacement-list">
+                    <span class="mdl-list__item-primary-content">
+                      Type this
+                      <i class="material-icons">arrow_forward</i> Get this
+                    </span>
+                  </li>
                   <li v-for="(get, type) in replacements" class="mdl-list__item replacement-list">
                     <span class="mdl-list__item-primary-content">
-                      {{ type }} <i class="material-icons">arrow_forward</i> {{ get }}
+                      {{ type }}
+                      <i class="material-icons">arrow_forward</i> {{ get }}
                     </span>
                   </li>
                 </ul>
@@ -212,18 +219,24 @@
                 </a>
               </div>
             </div>
-            </div>
           </div>
+
+          <!-- Procedure Window -->
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+            <h3>Procedure</h3>
+            <!-- Porcedures go here -->
+          </div>
+        </div>
       </main>
       </div>
-      </div>
+    </div>
 
-      <script src="(( url_for('static', filename='cookie.js') ))"></script>
-      <script src="(( url_for('static', filename='loading.js') ))"></script>
-      <script src="(( url_for('static', filename='material.min.js') ))"></script>
-      <script src="(( url_for('static', filename='vue.js') ))"></script>
-      <script src="(( url_for('static', filename='temp-charts.js') ))"></script>
-      <script src="(( url_for('static', filename='controller.js') ))"></script>
+    <script src="(( url_for('static', filename='cookie.js') ))"></script>
+    <script src="(( url_for('static', filename='loading.js') ))"></script>
+    <script src="(( url_for('static', filename='material.min.js') ))"></script>
+    <script src="(( url_for('static', filename='vue.js') ))"></script>
+    <script src="(( url_for('static', filename='temp-charts.js') ))"></script>
+    <script src="(( url_for('static', filename='controller.js') ))"></script>
 </body>
 
 </html>

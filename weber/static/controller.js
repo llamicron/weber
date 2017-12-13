@@ -200,7 +200,7 @@ var app = new Vue({
   computed: {
     replacements() {
       return {
-        "{current}": this.pid['pv'] + "˚F",
+        "{temp}": this.pid['pv'] + "˚F",
         "{target}": this.pid['sv'] + "˚F",
         "{time}": new Date().toLocaleTimeString(),
         "{timer}": Math.round(this.timeRemaining / 60) + " minutes"
