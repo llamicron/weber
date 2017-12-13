@@ -182,16 +182,15 @@ var app = new Vue({
 
     sendInSlack() {
       this.parseSlackMessage();
-      console.log(this.slack_message);
-      // axios.post('/slack', {
-      //   message: this.slack_message
-      // })
-      // .then(response => {
-      //   console.log(response);
-      // })
-      // .catch(error => {
-      //   console.log(error);
-      // });
+      axios.post('/slack', {
+        message: this.slack_message
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
       this.slack_message = "";
     }
   },
