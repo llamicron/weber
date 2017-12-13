@@ -73,7 +73,11 @@ var app = new Vue({
 
     cancelTimer() {
       Cookies.set('endTime', this.now() - 2);
-      this.slack_message = "";
+      // FIXME: Is this a good idea?
+      // Should i clear message at all?
+      if (this.sendWhenDone) {
+        this.slack_message = "";
+      }
     },
 
     now() {
@@ -162,11 +166,28 @@ var app = new Vue({
       }
     },
 
-    sendInSlack() {
+    parseSlackMessage() {
       if (this.slack_message == "") {
         console.log("Slack message empty. Not sending.");
         return false;
       }
+
+      // This needs to be done here because it references other instance variables
+      replacements = {
+        "{current}": this.pid['pv'] + "˚F",
+        "{target}": this.pid['sv'] + "˚F",
+      }
+
+      for (var regex in replacements) {
+        replacement = replacements[regex];
+        this.slack_message = this.slack_message.replace(regex, replacement);
+      }
+      return true;
+    },
+
+    sendInSlack() {
+      this.parseSlackMessage();
+
       axios.post('/slack', {
         message: this.slack_message
       })
@@ -179,7 +200,6 @@ var app = new Vue({
       this.slack_message = "";
     }
   },
-
 
   mounted() {
     this.setTempBars();
