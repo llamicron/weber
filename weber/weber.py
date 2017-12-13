@@ -98,7 +98,7 @@ def run_procedure():
 def run_next_step():
     if not hasattr(app, 'runner'):
         return "False"
-    app.runner.run_next_step()
+    app.runner.next_step()
     return json.dumps(app.runner.proc)
 
 
@@ -122,6 +122,7 @@ def serve_procedure_data():
     file_list = glob.glob('weber/data/procedures' + '/*.json')
     procedures = []
     for file_path in file_list:
+        # if "defaultprocedure" not in file_path:
         procedures.append(json.load(open(file_path)))
 
     return json.dumps(procedures)

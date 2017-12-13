@@ -1,0 +1,13 @@
+{
+  "tasks": [
+    {
+      "taskName": "test",
+      "suppressTaskName": true,
+      "command": "pytest",
+      "args": [
+        "${file}"
+      ],
+      "isTestCommand": true
+    }
+  ]
+}
