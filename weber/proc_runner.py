@@ -1,4 +1,5 @@
 import copy
+import time
 from brewer.controller import Controller
 
 class ProcRunner:
@@ -7,23 +8,42 @@ class ProcRunner:
 
         self.proc = proc
         self.proc.sort(key=lambda x: x['position'])
-
-        self.python_proc = self.parse_proc(self.proc)
         self.fullProc = copy.deepcopy(self.proc)
 
     def next_step(self):
         """
         Pops off the step at the head of the list and runs it
         """
+        if len(self.proc) < 1:
+            return False
         self.run(self.proc.pop(0))
+        return True
 
     def run(self, step):
-        print(step)
+        if step['class'] == "Controller":
+            method = getattr(Controller, step['method'])
+            if not callable(method):
+                raise
 
-    def parse_proc(self, proc):
-        """
-        Parses the json values returned from the front end into python methods and arguments
-        """
-        for item in proc:
-            pass
-        return []
+            if not 'value' in step.keys():
+                method(self.con)
+
+            if step['type'] == 'binary':
+                step['value'] = int(step['value'])
+                assert step['value'] in (1, 0)
+            elif step['type'] == 'divert':
+                step['value'] = str(step['value'])
+                step['value'] = str(step['locationVerbage'][step['value']])
+                assert step['value'] in ('mash', 'boil')
+            elif step['type'] == 'method':
+                if step['inputType'] == "text":
+                    step['value'] = str(step['value'])
+                elif step['inputType'] == "tel":
+                    step['value'] = int(step['value'])
+
+            method(self.con, step['value'])
+
+        elif step['class'] == "time":
+            method = getattr(time, step['method'])
+            if callable(method):
+                method(int(step['value']))

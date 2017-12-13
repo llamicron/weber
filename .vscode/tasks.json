@@ -5,7 +5,8 @@
       "suppressTaskName": true,
       "command": "pytest",
       "args": [
-        "${file}"
+        "-s",
+        "weber/test_proc_runner.py"
       ],
       "isTestCommand": true
     }

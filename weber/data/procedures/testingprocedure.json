@@ -182,11 +182,9 @@
             "desc": "Wait until PV is this value or greater",
             "method": "watch",
             "class": "Controller",
-            "inputLabel": "Wait until temp >= this",
             "icon": "search",
             "id": 11,
-            "position": 11,
-            "value": "15"
+            "position": 11
         },
         {
             "type": "method",

@@ -5,44 +5,69 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 Controller	../weber/json_handler.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:3
+Controller	../weber/proc_runner.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:3
+Controller	../weber/test_proc_runner.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:7
 Controller	../weber/weber.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:6
-CustomFlask	../weber/weber.py	/^class CustomFlask(Flask):$/;"	kind:class	line:10
+CustomFlask	../weber/weber.py	/^class CustomFlask(Flask):$/;"	kind:class	line:11
 Flask	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:5
 Handler	../weber/json_handler.py	/^class Handler():$/;"	kind:class	line:5
 Handler	../weber/weber.py	/^from json_handler import Handler$/;"	kind:namespace	line:7
+ProcRunner	../weber/proc_runner.py	/^class ProcRunner:$/;"	kind:class	line:5
+ProcRunner	../weber/test_proc_runner.py	/^from proc_runner import ProcRunner$/;"	kind:namespace	line:6
+ProcRunner	../weber/weber.py	/^from proc_runner import ProcRunner$/;"	kind:namespace	line:8
+TestProcRunner	../weber/test_proc_runner.py	/^class TestProcRunner(unittest.TestCase):$/;"	kind:class	line:9
 __init__	../weber/json_handler.py	/^    def __init__(self):$/;"	kind:member	line:6
+__init__	../weber/proc_runner.py	/^    def __init__(self, proc):$/;"	kind:member	line:6
 app	../weber/weber.py	/^app = CustomFlask(__name__)$/;"	kind:variable	line:22
-block_end_string	../weber/weber.py	/^        block_end_string='%)',$/;"	kind:variable	line:14
-block_start_string	../weber/weber.py	/^        block_start_string='(%',$/;"	kind:variable	line:13
-comment_end_string	../weber/weber.py	/^        comment_end_string='#)',$/;"	kind:variable	line:18
-comment_start_string	../weber/weber.py	/^        comment_start_string='(#',$/;"	kind:variable	line:17
+block_end_string	../weber/weber.py	/^        block_end_string='%)',$/;"	kind:variable	line:15
+block_start_string	../weber/weber.py	/^        block_start_string='(%',$/;"	kind:variable	line:14
+comment_end_string	../weber/weber.py	/^        comment_end_string='#)',$/;"	kind:variable	line:19
+comment_start_string	../weber/weber.py	/^        comment_start_string='(#',$/;"	kind:variable	line:18
 con	../weber/weber.py	/^con = Controller()$/;"	kind:variable	line:23
-dated_url_for	../weber/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:123
+copy	../weber/proc_runner.py	/^import copy$/;"	kind:namespace	line:1
+dated_url_for	../weber/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:142
 glob	../weber/weber.py	/^import glob$/;"	kind:namespace	line:2
-index	../weber/weber.py	/^def index():$/;"	kind:function	line:28
-jinja_options	../weber/weber.py	/^    jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:11
+index	../weber/weber.py	/^def index():$/;"	kind:function	line:27
+jinja_options	../weber/weber.py	/^    jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:12
 json	../weber/json_handler.py	/^import json$/;"	kind:namespace	line:1
+json	../weber/test_proc_runner.py	/^import json$/;"	kind:namespace	line:2
 json	../weber/weber.py	/^import json$/;"	kind:namespace	line:1
 json_handler	../weber/weber.py	/^json_handler = Handler()$/;"	kind:variable	line:24
 json_handler.py	../weber/json_handler.py	1;"	kind:file	line:1
+next_step	../weber/proc_runner.py	/^    def next_step(self):$/;"	kind:member	line:15
+os	../weber/test_proc_runner.py	/^import os$/;"	kind:namespace	line:3
 os	../weber/weber.py	/^import os$/;"	kind:namespace	line:3
-override_url_for	../weber/weber.py	/^def override_url_for():$/;"	kind:function	line:119
-procedures	../weber/weber.py	/^def procedures():$/;"	kind:function	line:38
+override_url_for	../weber/weber.py	/^def override_url_for():$/;"	kind:function	line:138
+print	../weber/test_proc_runner.py	/^from pprint import pprint as print$/;"	kind:namespace	line:4
+proc_runner.py	../weber/proc_runner.py	1;"	kind:file	line:1
+procedures	../weber/weber.py	/^def procedures():$/;"	kind:function	line:35
 redirect	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:5
-redirect_home	../weber/weber.py	/^def redirect_home():$/;"	kind:function	line:33
+redirect_home	../weber/weber.py	/^def redirect_home():$/;"	kind:function	line:31
 render_template	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:5
 request	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:5
-save_procedure	../weber/weber.py	/^def save_procedure():$/;"	kind:function	line:75
-send_in_slack	../weber/weber.py	/^def send_in_slack():$/;"	kind:function	line:69
-serve_items	../weber/weber.py	/^def serve_items():$/;"	kind:function	line:95
-serve_pid_data	../weber/weber.py	/^def serve_pid_data():$/;"	kind:function	line:105
-serve_procedure_data	../weber/weber.py	/^def serve_procedure_data():$/;"	kind:function	line:109
-serve_relay_list	../weber/weber.py	/^def serve_relay_list():$/;"	kind:function	line:100
-set_relay	../weber/weber.py	/^def set_relay():$/;"	kind:function	line:43
-set_sv	../weber/weber.py	/^def set_sv():$/;"	kind:function	line:59
+run	../weber/proc_runner.py	/^    def run(self, step):$/;"	kind:member	line:21
+run_next_step	../weber/weber.py	/^def run_next_step():$/;"	kind:function	line:98
+run_procedure	../weber/weber.py	/^def run_procedure():$/;"	kind:function	line:84
+sanitize_filename	../weber/weber.py	/^def sanitize_filename(string, **kwargs):$/;"	kind:function	line:151
+save_procedure	../weber/weber.py	/^def save_procedure():$/;"	kind:function	line:69
+send_in_slack	../weber/weber.py	/^def send_in_slack():$/;"	kind:function	line:63
+serve_current_step	../weber/weber.py	/^def serve_current_step():$/;"	kind:function	line:131
+serve_items	../weber/weber.py	/^def serve_items():$/;"	kind:function	line:107
+serve_pid_data	../weber/weber.py	/^def serve_pid_data():$/;"	kind:function	line:117
+serve_procedure_data	../weber/weber.py	/^def serve_procedure_data():$/;"	kind:function	line:121
+serve_relay_list	../weber/weber.py	/^def serve_relay_list():$/;"	kind:function	line:112
+setUp	../weber/test_proc_runner.py	/^    def setUp(self):$/;"	kind:member	line:10
+set_relay	../weber/weber.py	/^def set_relay():$/;"	kind:function	line:39
+set_sv	../weber/weber.py	/^def set_sv():$/;"	kind:function	line:54
+test_assert_see_con_changes	../weber/test_proc_runner.py	/^    def test_assert_see_con_changes(self):$/;"	kind:member	line:22
+test_it_can_run_steps	../weber/test_proc_runner.py	/^    def test_it_can_run_steps(self):$/;"	kind:member	line:27
+test_it_pops_off_a_step_when_it_runs_it	../weber/test_proc_runner.py	/^    def test_it_pops_off_a_step_when_it_runs_it(self):$/;"	kind:member	line:16
+test_proc_runner.py	../weber/test_proc_runner.py	1;"	kind:file	line:1
+time	../weber/proc_runner.py	/^import time$/;"	kind:namespace	line:2
 to_vue	../weber/json_handler.py	/^    def to_vue(self, file):$/;"	kind:member	line:33
+unittest	../weber/test_proc_runner.py	/^import unittest$/;"	kind:namespace	line:1
 update_relays	../weber/json_handler.py	/^    def update_relays(self):$/;"	kind:member	line:15
 url_for	../weber/weber.py	/^from flask import Flask, render_template, url_for, redirect, request$/;"	kind:namespace	line:5
-variable_end_string	../weber/weber.py	/^        variable_end_string='))',$/;"	kind:variable	line:16
-variable_start_string	../weber/weber.py	/^        variable_start_string='((',$/;"	kind:variable	line:15
+variable_end_string	../weber/weber.py	/^        variable_end_string='))',$/;"	kind:variable	line:17
+variable_start_string	../weber/weber.py	/^        variable_start_string='((',$/;"	kind:variable	line:16
 weber.py	../weber/weber.py	1;"	kind:file	line:1
