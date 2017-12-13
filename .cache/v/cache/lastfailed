@@ -1,4 +1,3 @@
 {
-  "weber/proc_runner.py": true,
-  "weber/test_proc_runner.py::TestProcRunner::test_full_proc": true
+  "weber/proc_runner.py": true
 }

@@ -20,30 +20,53 @@ class ProcRunner:
         return True
 
     def run(self, step):
-        if step['class'] == "Controller":
-            method = getattr(Controller, step['method'])
-            if not callable(method):
-                raise
+        method = self.find_method(step)
+        arg = self.find_args(step)
 
-            if not 'value' in step.keys():
-                method(self.con)
+        if callable(method):
+            method(arg)
 
-            if step['type'] == 'binary':
-                step['value'] = int(step['value'])
-                assert step['value'] in (1, 0)
-            elif step['type'] == 'divert':
-                step['value'] = str(step['value'])
-                step['value'] = str(step['locationVerbage'][step['value']])
-                assert step['value'] in ('mash', 'boil')
-            elif step['type'] == 'method':
-                if step['inputType'] == "text":
-                    step['value'] = str(step['value'])
-                elif step['inputType'] == "tel":
-                    step['value'] = int(step['value'])
+    def find_method(self, step):
+        methods = {
+            "hlt": self.con.hlt,
+            "pump": self.con.pump,
+            "rims": self.con.pid,
+            "hltDivert": self.con.hlt_to,
+            "rimsDivert": self.con.rims_to,
+            "sleep": time.sleep,
+            "watch": self.con.watch,
+            "slack": self.con.slack.send,
+            "set_sv": self.con.set_sv
+        }
+        return methods[step['name']]
 
-            method(self.con, step['value'])
+    def find_args(self, step):
+        allowed_types = {
+            "hlt": int,
+            "pump": int,
+            "rims": int,
+            "hltDivert": str,
+            "rimsDivert": str,
+            "sleep": (int, float),
+            "watch": None,
+            "slack": str,
+            "set_sv": (int, float)
+        }
 
-        elif step['class'] == "time":
-            method = getattr(time, step['method'])
-            if callable(method):
-                method(int(step['value']))
+        if not allowed_types[step['name']]:
+            return None
+
+        if step['type'] == "divert":
+            return 'mash' if int(step['value']) == 0 else 'boil'
+
+        try:
+            if isinstance(step['value'], allowed_types[step['name']]):
+                return step['value']
+            else:
+                if isinstance(allowed_types[step['name']], tuple):
+                    return allowed_types[step['name']][0](step['value'])
+                return allowed_types[step['name']](step['value'])
+        except (KeyError, ValueError):
+            return None
+
+

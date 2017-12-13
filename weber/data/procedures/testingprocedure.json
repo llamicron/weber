@@ -177,17 +177,6 @@
         },
         {
             "type": "method",
-            "name": "watch",
-            "prettyName": "Watch Until",
-            "desc": "Wait until PV is this value or greater",
-            "method": "watch",
-            "class": "Controller",
-            "icon": "search",
-            "id": 11,
-            "position": 11
-        },
-        {
-            "type": "method",
             "name": "slack",
             "prettyName": "Send in Slack",
             "desc": "Sends a message in slack",
