@@ -253,15 +253,6 @@ var app = new Vue({
 
     fade(document.querySelector('#loading'));
 
-    // This is temporary for testing
-    axios.post('/run-procedure', {
-      name: "Testing Procedure"
-    }).then(response => {
-      console.log(response);
-    }).catch(error => {
-      console.log(error);
-    });
-
   },
 
   watch: {

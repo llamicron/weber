@@ -24,7 +24,10 @@ class ProcRunner:
         arg = self.find_args(step)
 
         if callable(method):
-            method(arg)
+            if arg:
+                method(arg)
+            else:
+                method()
 
     def find_method(self, step):
         methods = {
