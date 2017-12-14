@@ -222,9 +222,51 @@
           </div>
 
           <!-- Procedure Window -->
-          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col mdl-cell--hide-phone mdl-cell--hide-tablet">
             <h3>Procedure</h3>
-            <!-- Porcedures go here -->
+            <button @click="runNextStep">Run Next Step</button>
+            <!-- Current Procedure Table -->
+            <table id="itemsTable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+              <thead>
+                <tr>
+                  <!-- Icon -->
+                  <th style="width: 4px;" class="mdl-data-table__cell--non-numeric"></th>
+                  <th class="mdl-data-table__cell--non-numeric">Step</th>
+                  <th class="mdl-data-table__cell--non-numeric">Options</th>
+                  <th class="mdl-data-table__cell--non-numeric">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in remainingSteps" :id="item.id" :key="item.id">
+                  <!-- Icon -->
+                  <td class="mdl-data-table__cell--non-numeric">
+                    <i class="material-icons">{{ item.icon }}</i>
+                  </td>
+                  <!-- Name -->
+                  <td class="mdl-data-table__cell--non-numeric">
+                    {{ item.prettyName }}
+                  </td>
+                  <!-- Inputs -->
+                  <td class="mdl-data-table__cell--non-numeric">
+                    <!-- Binary Options -->
+                    <pre v-if="item.type == 'binary'">{{ item.stateVerbage[item.value] }}</pre>
+                    <!-- Method Option -->
+                    <!-- <pre v-if="item.type == 'method'">{{ item.value }}</pre> -->
+                    <pre v-if="item.name == 'slack'" id="slack-text-overflow">send "{{ item.value }}"</pre>
+                    <pre v-if="item.name == 'sleep'">{{ item.value }} minutes</pre>
+                    <pre v-if="item.name == 'watch'"></pre>
+                    <pre v-if="item.name == 'set_sv'">{{ item.value }}˚F</pre>
+
+                    <!-- Divert Option -->
+                    <pre v-if="item.type == 'divert'">to {{ item.locationVerbage[item.value] }}</pre>
+                  </td>
+                  <!-- Descriptions -->
+                  <td v-if="item.type == 'binary'" class="mdl-data-table__cell--non-numeric">Set {{ item.prettyName }} to {{ item.stateVerbage[item.value] }}</td>
+                  <td v-if="item.type == 'divert'" class="mdl-data-table__cell--non-numeric">Set {{ item.prettyName }} to {{ item.locationVerbage[item.value] }}</td>
+                  <td v-if="item.type == 'method'" class="mdl-data-table__cell--non-numeric">{{ item.desc }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </main>

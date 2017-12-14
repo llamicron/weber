@@ -185,7 +185,7 @@
             "class": "Controller",
             "inputType": "text",
             "inputLabel": "A Message for Slack...",
-            "value": "Yay testing",
+            "value": "This is a test. No animals were harmed in the development of this application",
             "id": 12,
             "position": 12
         },

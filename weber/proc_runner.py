@@ -69,4 +69,5 @@ class ProcRunner:
         except (KeyError, ValueError):
             return None
 
-
+    def remaining_steps(self):
+        return self.proc

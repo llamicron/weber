@@ -16,7 +16,8 @@ var app = new Vue({
     slack_message: "",
     sendWhenDone: false,
     timeRemaining: -2,
-    showSlackHelp: false
+    showSlackHelp: false,
+    remainingSteps: []
   },
 
   methods: {
@@ -187,13 +188,38 @@ var app = new Vue({
       axios.post('/slack', {
         message: this.slack_message
       })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
       this.slack_message = "";
+    },
+
+    runNextStep() {
+      axios.get('/run-next-step')
+        .then(response => {
+          console.log(response);
+          this.remainingSteps = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+
+    getRemainingSteps() {
+      axios.get('/remaining-steps')
+        .then(response => {
+          console.log(response);
+          if (response.data == "False") {
+            this.message = "No procedure started. Go to the procedures tab."
+          }
+          this.remainingSteps = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
 
@@ -215,7 +241,7 @@ var app = new Vue({
     this.relayUpdator = window.setInterval(() => {
       this.getRelayList();
     }, 1000);
-    this.pidUpdator= window.setInterval(() => {
+    this.pidUpdator = window.setInterval(() => {
       this.getPidInfo();
     }, this.pidUpdateInterval())
 
@@ -223,7 +249,19 @@ var app = new Vue({
       this.startTimerInterval();
     }
 
+    this.getRemainingSteps();
+
     fade(document.querySelector('#loading'));
+
+    // This is temporary for testing
+    axios.post('/run-procedure', {
+      name: "Testing Procedure"
+    }).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
+
   },
 
   watch: {

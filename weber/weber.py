@@ -94,12 +94,12 @@ def run_procedure():
     app.runner = ProcRunner(proc['items'])
     return "True"
 
-@app.route('/run-next-step', methods=["POST"])
+@app.route('/run-next-step', methods=["GET"])
 def run_next_step():
     if not hasattr(app, 'runner'):
         return "False"
     app.runner.next_step()
-    return json.dumps(app.runner.proc)
+    return json.dumps(app.runner.remaining_steps())
 
 
 # Resources
@@ -126,11 +126,11 @@ def serve_procedure_data():
             procedures.append(json.load(open(file_path)))
     return json.dumps(procedures)
 
-@app.route('/current-step', methods=["GET"])
-def serve_current_step():
+@app.route('/remaining-steps', methods=["GET"])
+def serve_remaining_steps():
     if not hasattr(app, 'runner'):
         return "False"
-    return json.dumps(app.runner.proc)
+    return json.dumps(app.runner.remaining_steps())
 
 
 @app.context_processor

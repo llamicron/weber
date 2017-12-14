@@ -18,7 +18,8 @@ var app = new Vue({
       results: []
     },
     id: 0,
-    message: ""
+    message: "",
+    confirmClear: false
   },
 
   methods: {
@@ -56,6 +57,7 @@ var app = new Vue({
         });
     },
 
+    // On list update
     onUpdate(event) {
       console.log("By Old Index: " + this.tableItems[event.oldIndex].prettyName + " - Index: " + event.oldIndex);
       console.log("By new index: " + this.tableItems[event.newIndex].prettyName + " - Index: " + event.newIndex);
@@ -103,11 +105,6 @@ var app = new Vue({
     },
 
     setCurrentProcedure() {
-      if (this.procedureName == '') {
-        this.tableItems = [];
-        return true;
-      }
-
       for (let i = 0; i < this.procedureList.length; i++) {
         const proc = this.procedureList[i];
         if (proc.name == this.procedureName) {
@@ -116,6 +113,13 @@ var app = new Vue({
         }
       }
       return false;
+    },
+
+    clearProcedure() {
+      this.procedureName = "";
+      this.tableItems = [];
+      this.confirmClear = false
+      return true;
     },
 
     runProcedure() {
@@ -133,18 +137,7 @@ var app = new Vue({
         console.log(response);
       }).catch(error => {
         console.log(error);
-      })
-
-    },
-
-    getRemainingStep() {
-      axios.get('/current-step')
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => {
-          console.log(error);
-        })
+      });
     }
   },
 
