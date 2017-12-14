@@ -172,8 +172,16 @@ var app = new Vue({
     }
   }
 })
-
-$(function () {
-  $("#sortable").sortable();
-  $("#sortable").disableSelection();
-});
+$("#sortable").sortable({
+  update: function () {
+    $('#sortable').children().each(function (newPosition) {
+      element_id = $(this).attr('id')
+      for (let i = 0; i < app.tableItems.length; i++) {
+        const item = app.tableItems[i];
+        if (item.id == element_id) {
+          app.tableItems[i].position = newPosition;
+        }
+      }
+    });
+  }
+})
