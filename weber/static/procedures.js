@@ -172,6 +172,7 @@ var app = new Vue({
     }
   }
 })
+
 $("#sortable").sortable({
   update: function () {
     $('#sortable').children().each(function (newPosition) {
