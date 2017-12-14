@@ -1,8 +1,8 @@
-Vue.directive('sortable', {
-  inserted: function (el, binding) {
-    new Sortable(el, binding.value || {})
-  }
-})
+// Vue.directive('sortable', {
+//   inserted: function (el, binding) {
+//     new Sortable(el, binding.value || {})
+//   }
+// })
 
 var app = new Vue({
   el: '#procedures',
@@ -173,3 +173,7 @@ var app = new Vue({
   }
 })
 
+$(function () {
+  $("#sortable").sortable();
+  $("#sortable").disableSelection();
+});

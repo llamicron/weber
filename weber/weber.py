@@ -122,9 +122,8 @@ def serve_procedure_data():
     file_list = glob.glob('weber/data/procedures' + '/*.json')
     procedures = []
     for file_path in file_list:
-        # if "testingprocedure" not in file_path:
-        procedures.append(json.load(open(file_path)))
-
+        if "testingprocedure" not in file_path:
+            procedures.append(json.load(open(file_path)))
     return json.dumps(procedures)
 
 @app.route('/current-step', methods=["GET"])
