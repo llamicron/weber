@@ -21,6 +21,8 @@ class CustomFlask(Flask):
 
 app = CustomFlask(__name__)
 con = Controller()
+# Enable slack to the #alerts channel instead of just to me
+con.slack.channel = "#alerts"
 json_handler = Handler()
 
 @app.route('/')
@@ -33,7 +35,7 @@ def redirect_home():
 
 @app.route('/procedures')
 def procedures():
-    return render_template("procedures.html")
+    return render_template("index.html")
 
 @app.route('/set-relay', methods=["POST"])
 def set_relay():

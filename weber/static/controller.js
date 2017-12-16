@@ -144,6 +144,9 @@ var app = new Vue({
     },
 
     toggleRelay(relay) {
+      if (relay.name != 'rims') {
+        return false;
+      }
       axios.post('/set-relay', {
         relay: relay
       }).then(response => {
